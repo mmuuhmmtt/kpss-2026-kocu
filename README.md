@@ -1,16 +1,56 @@
-# React + Vite
+# KPSS 2026 Lisans Çalışma Koçu 🎯
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+KPSS 2026 Lisans sınavına hazırlanan adaylar için geliştirilmiş; konu takibi, aralıklı tekrar (spaced repetition) algoritması ve deneme sınavı net analizlerini tek bir panelde toplayan web tabanlı çalışma takip platformu.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ⚡ Özellikler
 
-## React Compiler
+- **⏱️ Sınav Sayacı & Hedef Net Takibi:** Sınava kalan süreyi (Gün, Saat, Dakika) ve hedeflenen net değerini anlık gösterir.
+- **📚 3 Seviyeli Müfredat Haritası:** ÖSYM soru dağılımına uygun 6 KPSS dersi (Türkçe, Matematik, Tarih, Coğrafya, Vatandaşlık, Güncel Bilgiler) ve alt konuların yüzdesel ilerleme takibi.
+- **🧠 Aralıklı Tekrar (Spaced Repetition):** Öğrenilen alt konuları Ebbinghaus unutma eğrisine göre 2, 5, 10 ve 21 günlük periyotlarda otomatik olarak tekrar listesine ekler.
+- **📈 Deneme Sınavı & Net Grafiği:** Çözülen denemeleri kaydetme, ders bazlı net hesaplama ve derse göre renk değiştiren gelişim grafiği.
+- **🏆 Oyunlaştırma (Gamification):** Çalıştıkça XP kazanma, seviye atlama, streak (günlük seri) ve KPSS başarımları/rozetleri.
+- **💾 Veri Yedekleme & Sıfırlama:** Tüm verileri JSON olarak dışa/içe aktarma ve profil tercihlerini düzenleme.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 🛠️ Teknolojiler
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- **Frontend:** React 19, Vite
+- **Styling:** Tailwind CSS (Modern Dark Mode & Glassmorphism)
+- **Grafik:** Recharts
+- **İkonlar:** Lucide React
+- **Veri Saklama:** LocalStorage (Çevrimdışı çalışabilir)
+
+---
+
+## 🚀 Kurulum ve Çalıştırma
+
+Projeyi yerel makinenizde çalıştırmak için:
+
+```bash
+# Depoyu klonlayın
+git clone https://github.com/mmuuhmmtt/kpss-2026-kocu.git
+
+# Proje dizinine geçin
+cd kpss-2026-kocu
+
+# Bağımlılıkları yükleyin
+npm install
+
+# Geliştirici sunucusunu başlatın
+npm run dev
+```
+
+Üretim sürümü (Production build) almak için:
+
+```bash
+npm run build
+```
+
+---
+
+## 📄 Lisans
+
+MIT Lisansı ile lisanslanmıştır.
