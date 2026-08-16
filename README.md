@@ -1,56 +1,41 @@
-# KPSS 2026 Lisans Çalışma Koçu 🎯
+# KPSS 2026 Lisans Çalışma Koçu
 
-KPSS 2026 Lisans sınavına hazırlanan adaylar için geliştirilmiş; konu takibi, aralıklı tekrar (spaced repetition) algoritması ve deneme sınavı net analizlerini tek bir panelde toplayan web tabanlı çalışma takip platformu.
+KPSS 2026 Lisans sınavına hazırlık sürecinde konu takibi, aralıklı tekrar algoritması ve deneme sınavı net analizlerini tek bir panelde toplayan web platformu.
 
----
+## Özellikler
 
-## ⚡ Özellikler
+- Sınav Sayacı ve Hedef Net Takibi: Sınava kalan gün, saat, dakika sayacı ve hedeflenen net göstergesi.
+- Müfredat Haritası: 6 KPSS dersi ve alt konuların yüzdesel tamamlama oranları.
+- Aralıklı Tekrar Sistemi: Öğrenilen konuları Ebbinghaus eğrisine göre 2, 5, 10 ve 21 günlük periyotlarda tekrar ettiren algoritma.
+- Deneme Sınavı Takibi: Çözülen denemeleri kaydetme, ders bazlı net hesaplama ve gelişim grafiği.
+- XP ve Seviye Takibi: Çalışma süresine göre deneyim puanı ve başarı seviyesi takibi.
+- Veri Yönetimi: Verileri JSON formatında dışa veya içe aktarma imkanı.
 
-- **⏱️ Sınav Sayacı & Hedef Net Takibi:** Sınava kalan süreyi (Gün, Saat, Dakika) ve hedeflenen net değerini anlık gösterir.
-- **📚 3 Seviyeli Müfredat Haritası:** ÖSYM soru dağılımına uygun 6 KPSS dersi (Türkçe, Matematik, Tarih, Coğrafya, Vatandaşlık, Güncel Bilgiler) ve alt konuların yüzdesel ilerleme takibi.
-- **🧠 Aralıklı Tekrar (Spaced Repetition):** Öğrenilen alt konuları Ebbinghaus unutma eğrisine göre 2, 5, 10 ve 21 günlük periyotlarda otomatik olarak tekrar listesine ekler.
-- **📈 Deneme Sınavı & Net Grafiği:** Çözülen denemeleri kaydetme, ders bazlı net hesaplama ve derse göre renk değiştiren gelişim grafiği.
-- **🏆 Oyunlaştırma (Gamification):** Çalıştıkça XP kazanma, seviye atlama, streak (günlük seri) ve KPSS başarımları/rozetleri.
-- **💾 Veri Yedekleme & Sıfırlama:** Tüm verileri JSON olarak dışa/içe aktarma ve profil tercihlerini düzenleme.
+## Kullanılan Teknolojiler
 
----
+- React 19
+- Vite
+- Tailwind CSS
+- Recharts
+- Lucide React
 
-## 🛠️ Teknolojiler
+## Kurulum
 
-- **Frontend:** React 19, Vite
-- **Styling:** Tailwind CSS (Modern Dark Mode & Glassmorphism)
-- **Grafik:** Recharts
-- **İkonlar:** Lucide React
-- **Veri Saklama:** LocalStorage (Çevrimdışı çalışabilir)
-
----
-
-## 🚀 Kurulum ve Çalıştırma
-
-Projeyi yerel makinenizde çalıştırmak için:
+Projenizi yerel ortamda çalıştırmak için aşağıdaki komutları kullanabilirsiniz:
 
 ```bash
-# Depoyu klonlayın
 git clone https://github.com/mmuuhmmtt/kpss-2026-kocu.git
-
-# Proje dizinine geçin
 cd kpss-2026-kocu
-
-# Bağımlılıkları yükleyin
 npm install
-
-# Geliştirici sunucusunu başlatın
 npm run dev
 ```
 
-Üretim sürümü (Production build) almak için:
+Derleme (build) almak için:
 
 ```bash
 npm run build
 ```
 
----
+## Lisans
 
-## 📄 Lisans
-
-MIT Lisansı ile lisanslanmıştır.
+MIT
