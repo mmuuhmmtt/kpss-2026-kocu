@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;600;800;900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #121214;
+  --bg-secondary: #1C1C20;
+  --bg-card: #26262A;
+  --bg-card-hover: #2E2E33;
+  --border-color: transparent;
+  --accent-offwhite: #F5F5F0;
+  --accent-subtle-success: #8EAA90;
+  --accent-subtle-warning: #D09B82;
+  --text-primary: #F5F5F0;
+  --text-secondary: #9E9E9E;
+  --text-muted: #707074;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #121214;
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #121214;
+}
+::-webkit-scrollbar-thumb {
+  background: #2E2E33;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F5F5F0;
+}
+
+/* Minimalist Clean Grid Background (Dark #121214) */
+.bg-grid {
+  background: #121214;
+}
+
+/* Soft Depth Cards (Distinct Floating Cards with Generous Depth) */
+.glass-card {
+  background: #26262A;
+  border: none !important;
+  border-radius: 28px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.glass-card-hover {
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+.glass-card-hover:hover {
+  background: #2E2E33;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+  transform: translateY(-2px);
+}
+
+/* Clean Flat Track Pattern for Progress Bars */
+.striped-track {
+  background-color: #1A1A1D;
+}
+
+/* Off-White Cream Progress Fill (Smooth & Cool Glow with Shimmer) */
+@keyframes progressShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.futuristic-progress-fill {
+  background: linear-gradient(90deg, #E0E0DB 0%, #FFFFFF 50%, #E0E0DB 100%);
+  border-radius: 9999px;
+  box-shadow: 0 0 12px rgba(245, 245, 240, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+.futuristic-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  animation: progressShimmer 2.5s infinite;
+}
+
+.progress-bar-animated {
+  background-color: #1A1A1D;
+  border-radius: 9999px;
+}
+
+/* Countdown digits */
+.countdown-digit {
+  font-family: 'Orbitron', monospace;
+  font-weight: 800;
+  color: #F5F5F0;
+  line-height: 1;
+}
+
+/* Flat Wellness Subject Card Styling (No Borders) */
+.subject-turkce { background: #26262A; border: none !important; }
+.subject-matematik { background: #26262A; border: none !important; }
+.subject-tarih { background: #26262A; border: none !important; }
+.subject-cografya { background: #26262A; border: none !important; }
+.subject-vatandaslik { background: #26262A; border: none !important; }
+.subject-guncel { background: #26262A; border: none !important; }
+
+/* Flame Icon */
+.flame-icon {
+  display: inline-block;
+}
+
+/* Mascot Subtle Bobbing */
+@keyframes mascotBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+.mascot-animate {
+  animation: mascotBob 3s ease-in-out infinite;
+}
+
+/* Custom Checkbox */
+.custom-checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 8px;
+  border: none;
+  background: #1A1A1D;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+.custom-checkbox.checked {
+  background: #F5F5F0;
+  color: #1A1A1D;
+}
+.custom-checkbox:hover:not(.checked) {
+  background: #2E2E33;
+}
+
+/* Dark Modal Backdrop */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 15, 18, 0.92);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+/* XP Popup Animation */
+@keyframes xpFloat {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-24px); }
+}
+.xp-popup {
+  position: absolute;
+  font-family: 'Orbitron', monospace;
+  font-weight: 800;
+  color: #F5F5F0;
+  animation: xpFloat 1.5s ease-out forwards;
+  pointer-events: none;
+  z-index: 30;
+}
+
+/* Entrance animations */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-slide-up {
+  animation: fadeSlideUp 0.25s ease-out both;
+}
+
