@@ -37,14 +37,25 @@ const saveState = (state) => {
 
 const buildInitialState = () => {
   const saved = loadState();
-  if (saved) return { sidebarCollapsed: false, ...saved };
+  const validSubjectIds = new Set(INITIAL_CURRICULUM.map(s => s.id));
+
+  if (saved) {
+    const sanitizedCurriculum = (saved.curriculum || []).filter(s => validSubjectIds.has(s.id));
+    const finalCurriculum = sanitizedCurriculum.length > 0 ? sanitizedCurriculum : INITIAL_CURRICULUM;
+    const userProfile = {
+      ...saved.userProfile,
+      targetNet: (saved.userProfile?.targetNet && Number(saved.userProfile.targetNet) <= 45) ? Number(saved.userProfile.targetNet) : 35,
+    };
+    const dailyPractices = saved.dailyPractices || {};
+    return { sidebarCollapsed: false, ...saved, userProfile, curriculum: finalCurriculum, dailyPractices };
+  }
   return {
     sidebarCollapsed: false,
     userProfile: {
       name: '',
       surname: '',
       avatarUrl: null,
-      targetNet: 85,
+      targetNet: 35,
       onboardingCompleted: false,
     },
     curriculum: INITIAL_CURRICULUM,
@@ -55,6 +66,7 @@ const buildInitialState = () => {
     badges: [],           // ['badge_id', ...]
     exams: [],            // [{ id, title, date, scores: { subjectId: { correct, wrong } } }]
     notes: {},            // { subtopicId: string }
+    dailyPractices: {},   // { 'YYYY-MM-DD': { turkce: boolean, matematik: boolean } }
     streakCount: 0,
     lastActiveDate: null,
     view: 'dashboard',    // 'dashboard' | 'curriculum' | 'spaced' | 'exams' | 'heatmap' | 'settings'
@@ -215,8 +227,16 @@ function reducer(state, action) {
       return { ...state, xpPopups: [...state.xpPopups, popup] };
     }
 
-    case 'REMOVE_XP_POPUP':
-      return { ...state, xpPopups: state.xpPopups.filter(p => p.id !== action.id) };
+    case 'TOGGLE_DAILY_PRACTICE': {
+      const { date, practiceType } = action;
+      const current = state.dailyPractices?.[date] || { turkce: false, matematik: false };
+      const newValue = !current[practiceType];
+      const updated = {
+        ...(state.dailyPractices || {}),
+        [date]: { ...current, [practiceType]: newValue },
+      };
+      return { ...state, dailyPractices: updated };
+    }
 
     case 'RESET_DATA':
       return buildInitialState();
@@ -396,6 +416,19 @@ export function AppProvider({ children }) {
     dispatch({ type: 'RESET_DATA' });
   }, []);
 
+  const toggleDailyPractice = useCallback((practiceType) => {
+    const today = todayStr();
+    const currentStatus = state.dailyPractices?.[today] || { turkce: false, matematik: false };
+    const willBeCompleted = !currentStatus[practiceType];
+
+    dispatch({ type: 'TOGGLE_DAILY_PRACTICE', date: today, practiceType });
+
+    if (willBeCompleted) {
+      dispatch({ type: 'ADD_XP', amount: 30 });
+      dispatch({ type: 'ADD_XP_POPUP', amount: '+30 XP' });
+    }
+  }, [state.dailyPractices]);
+
   const saveUserProfile = useCallback((profile) => {
     dispatch({ type: 'SAVE_USER_PROFILE', profile });
   }, []);
@@ -472,6 +505,7 @@ export function AppProvider({ children }) {
       saveNote,
       updateCurriculum,
       saveUserProfile,
+      toggleDailyPractice,
       setView,
       toggleSidebar,
       removeXpPopup,

@@ -4,7 +4,8 @@ import { Target, TrendingUp, Award, ArrowUpRight } from 'lucide-react';
 
 export default function TargetNetWidget() {
   const { state, setView } = useApp();
-  const targetNet = state.userProfile?.targetNet || 85;
+  const rawTarget = Number(state.userProfile?.targetNet) || 35;
+  const targetNet = Math.min(45, Math.max(10, rawTarget > 45 ? 35 : rawTarget));
 
   // Calculate current average mock exam net score
   const exams = state.exams || [];

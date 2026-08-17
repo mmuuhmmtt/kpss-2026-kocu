@@ -3,6 +3,7 @@ import { useApp } from '../../context/AppContext';
 import ExamCountdown from './ExamCountdown';
 import MascotXPWidget from './MascotXPWidget';
 import TargetNetWidget from './TargetNetWidget';
+import DailyPracticeWidget from './DailyPracticeWidget';
 import { RotateCcw, BookOpen, ArrowRight } from 'lucide-react';
 
 export default function Dashboard() {
@@ -16,12 +17,17 @@ export default function Dashboard() {
         <ExamCountdown />
       </div>
 
-      {/* 2. Hedef Net & Karşılaştırma Widget'ı */}
+      {/* 2. Günlük Türkçe & Matematik Pratik Deneme Takibi */}
+      <div className="w-full">
+        <DailyPracticeWidget />
+      </div>
+
+      {/* 3. Hedef Net & Karşılaştırma Widget'ı */}
       <div className="w-full">
         <TargetNetWidget />
       </div>
 
-      {/* 3. KPSS Koçu Maskotu & XP Widget */}
+      {/* 4. KPSS Koçu Maskotu & XP Widget */}
       <div className="w-full">
         <MascotXPWidget />
       </div>
@@ -68,7 +74,7 @@ export default function Dashboard() {
         </div>
 
         {/* Wellness Circular Progress Rings Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 md:gap-8 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
           {[...state.curriculum].sort((a, b) => b.totalWeight - a.totalWeight).map(subject => {
             let total = 0, done = 0;
             for (const t of subject.topics) {
@@ -80,7 +86,7 @@ export default function Dashboard() {
             const spct = total > 0 ? Math.round((done / total) * 100) : 0;
             
             // SVG Circle Math
-            const radius = 32;
+            const radius = 34;
             const circumference = 2 * Math.PI * radius;
             const strokeDashoffset = circumference - (spct / 100) * circumference;
 
@@ -88,22 +94,28 @@ export default function Dashboard() {
               <button
                 key={subject.id}
                 onClick={() => setView('curriculum')}
-                className="glass-card glass-card-hover p-6 text-center group flex flex-col items-center justify-between cursor-pointer border-0 bg-[#26262A] rounded-[24px] shadow-md"
+                className="p-6 text-center group flex flex-col sm:flex-row items-center justify-between cursor-pointer border border-white/5 bg-[#18181B] hover:bg-[#202024] rounded-2xl shadow-lg transition-all"
               >
-                <div className="w-full flex items-center justify-between mb-2">
-                  <span className="text-2xl group-hover:scale-105 transition-transform">{subject.icon}</span>
-                  <span className="text-[11px] font-bold text-[#9E9E9E]">{subject.totalWeight} Soru</span>
+                <div className="flex items-center gap-4 mb-4 sm:mb-0">
+                  <div className="w-14 h-14 rounded-2xl bg-[#111113] border border-white/10 flex items-center justify-center text-3xl group-hover:scale-105 transition-transform shadow-inner">
+                    {subject.icon}
+                  </div>
+                  <div className="text-left">
+                    <h4 className="font-extrabold text-white text-base group-hover:text-emerald-400 transition-colors">{subject.name}</h4>
+                    <span className="text-xs font-semibold text-slate-400 block mt-0.5">{subject.totalWeight} Soru</span>
+                    <p className="text-xs text-slate-500 mt-1 font-medium">{done}/{total} konu tamamlandı</p>
+                  </div>
                 </div>
 
-                {/* Subject Circular Progress Ring with Claude Neon Orange Accent Color */}
-                <div className="relative w-24 h-24 my-2 flex items-center justify-center">
+                {/* Subject Circular Progress Ring */}
+                <div className="relative w-20 h-20 flex items-center justify-center flex-shrink-0">
                   <svg className="w-full h-full transform -rotate-90" viewBox="0 0 80 80">
                     <circle
                       cx="40"
                       cy="40"
                       r={radius}
-                      className="text-[#1A1A1D]"
-                      strokeWidth="6"
+                      className="text-[#111113]"
+                      strokeWidth="5"
                       stroke="currentColor"
                       fill="transparent"
                     />
@@ -111,33 +123,24 @@ export default function Dashboard() {
                       cx="40"
                       cy="40"
                       r={radius}
-                      stroke="#FF6B00"
-                      strokeWidth="6"
+                      stroke={subject.accentColor || '#10B981'}
+                      strokeWidth="5"
                       strokeDasharray={circumference}
                       strokeDashoffset={strokeDashoffset}
                       strokeLinecap="round"
                       fill="transparent"
                       className="transition-all duration-700 ease-out"
-                      style={{
-                        filter: 'drop-shadow(0 0 6px rgba(255, 107, 0, 0.45))'
-                      }}
                     />
                   </svg>
 
-                  {/* Centered Large Percentage Value with Claude Neon Orange */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <span
-                      className="text-xl font-black tracking-tight text-[#FF6B00]"
-                      style={{ fontFamily: "'Orbitron', monospace", filter: 'drop-shadow(0 0 6px rgba(255, 107, 0, 0.45))' }}
+                      className="text-base font-extrabold font-mono tracking-tight"
+                      style={{ color: subject.accentColor || '#10B981' }}
                     >
                       %{spct}
                     </span>
                   </div>
-                </div>
-
-                <div className="w-full mt-2 pt-2 border-t border-[#1A1A1D]/60 text-center">
-                  <h4 className="font-bold text-[#F5F5F0] text-sm group-hover:text-white transition-colors">{subject.name}</h4>
-                  <p className="text-[11px] text-[#9E9E9E] mt-0.5 font-medium">{done}/{total} konu tamamlandı</p>
                 </div>
               </button>
             );

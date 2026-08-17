@@ -8,177 +8,6 @@ export const EXAM_DATE = new Date('2026-09-06T09:00:00');
 
 export const INITIAL_CURRICULUM = [
   // ----------------------------------------------------------------
-  // TÜRKÇE — 30 Soru
-  // ----------------------------------------------------------------
-  {
-    id: 'turkce',
-    name: 'Türkçe',
-    colorClass: 'subject-turkce',
-    accentColor: '#60A5FA',
-    icon: '📚',
-    totalWeight: 30,
-    topics: [
-      {
-        id: 'turkce-1',
-        title: 'Sözcükte ve Cümlede Anlam',
-        weight: 7,
-        subtopics: [
-          { id: 'turkce-1-1', title: 'Sözcükte Anlam (Gerçek, Mecaz, Yan, Terim)' },
-          { id: 'turkce-1-2', title: 'Söz Öbekleri ve Kalıplaşmış İfadeler' },
-          { id: 'turkce-1-3', title: 'Cümlede Anlam İlişkileri (Neden-Sonuç, Amaç-Sonuç, Koşul vb.)' },
-          { id: 'turkce-1-4', title: 'Cümle Yorumu ve Duygu Değeri' },
-        ],
-      },
-      {
-        id: 'turkce-2',
-        title: 'Dil Bilgisi',
-        weight: 8,
-        subtopics: [
-          { id: 'turkce-2-1', title: 'Sözcük Türleri (İsim, Sıfat, Zamir, Zarf, Fiil, Edat, Bağlaç, Ünlem)' },
-          { id: 'turkce-2-2', title: 'Fiil Çatısı (Geçişli-Geçişsiz, Dönüşlü, İşteş, Ettirgen)' },
-          { id: 'turkce-2-3', title: 'Fiil Kipleri ve Fiilimsi' },
-          { id: 'turkce-2-4', title: 'Cümle Öğeleri (Özne, Yüklem, Nesne, Yer Tamlayıcı, Zarf Tümleci)' },
-          { id: 'turkce-2-5', title: 'Cümle Türleri (Yapı, Anlam, Yüklem Türü)' },
-          { id: 'turkce-2-6', title: 'Ekler ve Sözcük Yapımı (Yapım-Çekim Ekleri)' },
-        ],
-      },
-      {
-        id: 'turkce-3',
-        title: 'Yazım ve Noktalama',
-        weight: 4,
-        subtopics: [
-          { id: 'turkce-3-1', title: 'Yazım Kuralları (Büyük Harf, Bitişik-Ayrı Yazım)' },
-          { id: 'turkce-3-2', title: 'Noktalama İşaretleri ve Kullanım Kuralları' },
-        ],
-      },
-      {
-        id: 'turkce-4',
-        title: 'Paragraf Bilgisi',
-        weight: 7,
-        subtopics: [
-          { id: 'turkce-4-1', title: 'Paragrafın Ana Düşüncesi ve Yardımcı Düşünceler' },
-          { id: 'turkce-4-2', title: 'Paragraf Tamamlama' },
-          { id: 'turkce-4-3', title: 'Sözcük/Cümle Sıralaması' },
-          { id: 'turkce-4-4', title: 'Anlatım Bozuklukları (Dil Yanlışları)' },
-        ],
-      },
-      {
-        id: 'turkce-5',
-        title: 'Anlatım Türleri ve Teknikleri',
-        weight: 4,
-        subtopics: [
-          { id: 'turkce-5-1', title: 'Anlatım Teknikleri (Açıklama, Tartışma, Öyküleme, Betimleme)' },
-          { id: 'turkce-5-2', title: 'Yazı Türleri (Makale, Deneme, Fıkra, Sohbet, Eleştiri vb.)' },
-        ],
-      },
-    ],
-  },
-
-  // ----------------------------------------------------------------
-  // MATEMATİK — 30 Soru
-  // ----------------------------------------------------------------
-  {
-    id: 'matematik',
-    name: 'Matematik',
-    colorClass: 'subject-matematik',
-    accentColor: '#C084FC',
-    icon: '🔢',
-    totalWeight: 30,
-    topics: [
-      {
-        id: 'mat-1',
-        title: 'Sayılar ve Sayı Basamakları',
-        weight: 3,
-        subtopics: [
-          { id: 'mat-1-1', title: 'Doğal Sayılar, Tam Sayılar, Rasyonel Sayılar' },
-          { id: 'mat-1-2', title: 'Sayı Basamakları ve Basamak Değerleri' },
-          { id: 'mat-1-3', title: 'Bölünebilme Kuralları ve OBEB-OKEK' },
-        ],
-      },
-      {
-        id: 'mat-2',
-        title: 'Dört İşlem ve Kesirler',
-        weight: 3,
-        subtopics: [
-          { id: 'mat-2-1', title: 'Kesirlerle İşlemler (Toplama, Çıkarma, Çarpma, Bölme)' },
-          { id: 'mat-2-2', title: 'Ondalık Sayılar' },
-        ],
-      },
-      {
-        id: 'mat-3',
-        title: 'Oran-Orantı ve Yüzde',
-        weight: 4,
-        subtopics: [
-          { id: 'mat-3-1', title: 'Oran ve Orantı (Doğru-Ters Orantı)' },
-          { id: 'mat-3-2', title: 'Yüzde ve Faiz Hesapları' },
-          { id: 'mat-3-3', title: 'Karışım ve Alaşım Problemleri' },
-        ],
-      },
-      {
-        id: 'mat-4',
-        title: 'Sayı Problemleri',
-        weight: 4,
-        subtopics: [
-          { id: 'mat-4-1', title: 'Yaş ve Rakam Problemleri' },
-          { id: 'mat-4-2', title: 'İş-Havuz Problemleri' },
-          { id: 'mat-4-3', title: 'Hız-Yol-Zaman Problemleri' },
-        ],
-      },
-      {
-        id: 'mat-5',
-        title: 'Temel Cebir',
-        weight: 4,
-        subtopics: [
-          { id: 'mat-5-1', title: 'Denklem Çözümü (1. Dereceden)' },
-          { id: 'mat-5-2', title: 'Eşitsizlikler' },
-          { id: 'mat-5-3', title: 'Mutlak Değer' },
-          { id: 'mat-5-4', title: 'Üslü ve Köklü Sayılar' },
-        ],
-      },
-      {
-        id: 'mat-6',
-        title: 'Mantık',
-        weight: 2,
-        subtopics: [
-          { id: 'mat-6-1', title: 'Önerme ve Bağlaçlar' },
-          { id: 'mat-6-2', title: 'Doğruluk Tabloları ve Çıkarım' },
-        ],
-      },
-      {
-        id: 'mat-7',
-        title: 'Küme ve Fonksiyon',
-        weight: 2,
-        subtopics: [
-          { id: 'mat-7-1', title: 'Küme İşlemleri ve Venn Şeması' },
-          { id: 'mat-7-2', title: 'Fonksiyon Kavramı ve Grafikleri' },
-        ],
-      },
-      {
-        id: 'mat-8',
-        title: 'Olasılık ve İstatistik',
-        weight: 3,
-        subtopics: [
-          { id: 'mat-8-1', title: 'Permütasyon ve Kombinasyon' },
-          { id: 'mat-8-2', title: 'Olasılık Hesabı' },
-          { id: 'mat-8-3', title: 'Ortalama, Mod, Medyan, Standart Sapma' },
-        ],
-      },
-      {
-        id: 'mat-9',
-        title: 'Geometri',
-        weight: 5,
-        subtopics: [
-          { id: 'mat-9-1', title: 'Temel Geometri (Açılar, Üçgenler, Dörtgenler)' },
-          { id: 'mat-9-2', title: 'Çevre, Alan, Hacim Hesapları' },
-          { id: 'mat-9-3', title: 'Çember ve Daire' },
-          { id: 'mat-9-4', title: 'Koordinat Geometrisi' },
-          { id: 'mat-9-5', title: 'Dönüşüm Geometrisi (Yansıma, Dönme)' },
-        ],
-      },
-    ],
-  },
-
-  // ----------------------------------------------------------------
   // TARİH — 27 Soru (Genel Kültür)
   // ----------------------------------------------------------------
   {
@@ -191,72 +20,81 @@ export const INITIAL_CURRICULUM = [
     topics: [
       {
         id: 'tar-1',
-        title: 'Osmanlı Tarihi (Kuruluş ve Yükseliş)',
-        weight: 4,
+        title: 'İslamiyet öncesi Türk tarihi',
+        weight: 3,
         subtopics: [
-          { id: 'tar-1-1', title: 'Osmanlı Devleti\'nin Kuruluşu ve İlk Padişahlar' },
-          { id: 'tar-1-2', title: 'İstanbul\'un Fethi ve Önemi' },
-          { id: 'tar-1-3', title: 'Yükselme Devri: Yavuz Sultan Selim ve Kanuni' },
-          { id: 'tar-1-4', title: 'Osmanlı\'da Devlet Teşkilatı ve Toprak Yönetimi' },
+          { id: 'tar-1-1', title: 'Türklerin Anayurdu ve İlk Göçler' },
+          { id: 'tar-1-2', title: 'Asya Hun, Göktürk ve Uygur Devletleri' },
+          { id: 'tar-1-3', title: 'İlk Türk Devletlerinde Devlet Teşkilatı, Kültür ve Medeniyet' },
         ],
       },
       {
         id: 'tar-2',
-        title: 'Osmanlı Tarihi (Duraklama, Gerileme ve Dağılma)',
-        weight: 4,
+        title: 'Türk-İslam devletleri',
+        weight: 3,
         subtopics: [
-          { id: 'tar-2-1', title: 'Duraklama ve Gerileme Dönemi Özellikleri' },
-          { id: 'tar-2-2', title: 'Islahat Hareketleri (I. Mahmut\'tan II. Mahmut\'a)' },
-          { id: 'tar-2-3', title: 'Tanzimat ve Islahat Fermanları' },
-          { id: 'tar-2-4', title: 'I. ve II. Meşrutiyet' },
-          { id: 'tar-2-5', title: 'Osmanlı Dağılma Dönemi ve Balkan Savaşları' },
+          { id: 'tar-2-1', title: 'İslamiyet’in Kabulü ve Karahanlılar, Gazneliler' },
+          { id: 'tar-2-2', title: 'Büyük Selçuklu Devleti ve Türkiye Selçuklu Devleti' },
+          { id: 'tar-2-3', title: 'Türk-İslam Devletlerinde Kültür, Medeniyet ve Bilim' },
         ],
       },
       {
         id: 'tar-3',
-        title: 'I. Dünya Savaşı ve Kurtuluş Savaşı',
-        weight: 5,
+        title: 'Osmanlı Devleti siyasi gelişmeleri',
+        weight: 4,
         subtopics: [
-          { id: 'tar-3-1', title: 'I. Dünya Savaşı ve Osmanlı\'nın Savaşa Girişi' },
-          { id: 'tar-3-2', title: 'Mondros Mütarekesi ve İşgaller' },
-          { id: 'tar-3-3', title: 'Mustafa Kemal ve Kurtuluş Savaşı\'nın Başlaması' },
-          { id: 'tar-3-4', title: 'Kongreler Dönemi (Erzurum, Sivas) ve TBMM\'nin Açılması' },
-          { id: 'tar-3-5', title: 'Savaşlar (Sakarya, Büyük Taarruz) ve Lozan Antlaşması' },
+          { id: 'tar-3-1', title: 'Osmanlı Kuruluş ve Yükselme Dönemi Siyasi Gelişmeleri' },
+          { id: 'tar-3-2', title: 'Osmanlı Duraklama ve Gerileme Dönemi Siyasi Olayları' },
+          { id: 'tar-3-3', title: 'Osmanlı Dağılma Dönemi, Savaşlar ve Antlaşmalar' },
         ],
       },
       {
         id: 'tar-4',
-        title: 'Atatürk Dönemi İnkılapları',
-        weight: 5,
+        title: 'Osmanlı kültür ve uygarlığı',
+        weight: 4,
         subtopics: [
-          { id: 'tar-4-1', title: 'Siyasi İnkılaplar (Cumhuriyet, Halifeliğin Kaldırılması)' },
-          { id: 'tar-4-2', title: 'Hukuk ve Eğitim İnkılapları' },
-          { id: 'tar-4-3', title: 'Sosyal ve Kültürel İnkılaplar (Harf, Takvim, Kıyafet)' },
-          { id: 'tar-4-4', title: 'Ekonomik İnkılaplar ve Devletçilik' },
-          { id: 'tar-4-5', title: 'Atatürk İlkeleri (6 Ok)' },
+          { id: 'tar-4-1', title: 'Devlet Teşkilatı, Padişah ve Divan-ı Hümayun' },
+          { id: 'tar-4-2', title: 'Toprak Yönetimi, Tımar Sistemi ve Ordu Teşkilatı' },
+          { id: 'tar-4-3', title: 'Hukuk, Eğitim, Sanat, Mimari ve Sosyal Hayat' },
         ],
       },
       {
         id: 'tar-5',
-        title: 'Türkiye Tarihi (1938 Sonrası)',
-        weight: 3,
+        title: 'Kurtuluş Savaşı süreci',
+        weight: 5,
         subtopics: [
-          { id: 'tar-5-1', title: 'Çok Partili Hayata Geçiş ve Demokrat Parti Dönemi' },
-          { id: 'tar-5-2', title: 'Askeri Müdahaleler ve Siyasi Gelişmeler (1960-1980)' },
-          { id: 'tar-5-3', title: 'Türkiye\'nin Dış Politikası (Soğuk Savaş, AB süreci)' },
+          { id: 'tar-5-1', title: 'I. Dünya Savaşı, Mondros ve İşgaller' },
+          { id: 'tar-5-2', title: 'Cemiyetler, Genelgeler, Kongreler ve TBMM\'nin Açılması' },
+          { id: 'tar-5-3', title: 'Kurtuluş Savaşı Cepheleri ve Lozan Barış Antlaşması' },
         ],
       },
       {
         id: 'tar-6',
-        title: 'Türk-İslam Tarihi ve Dünya Tarihi',
-        weight: 6,
+        title: 'Atatürk ilke ve inkılapları',
+        weight: 3,
         subtopics: [
-          { id: 'tar-6-1', title: 'İslamiyet Öncesi Türk Devletleri (Hun, Göktürk, Uygur)' },
-          { id: 'tar-6-2', title: 'İslamiyet\'in Kabulü ve İlk Müslüman Türk Devletleri' },
-          { id: 'tar-6-3', title: 'Büyük Selçuklu ve Anadolu Selçuklu Devleti' },
-          { id: 'tar-6-4', title: 'Haçlı Seferleri ve Moğol İstilası' },
-          { id: 'tar-6-5', title: 'Fransız İhtilali ve Milliyetçilik Akımları' },
-          { id: 'tar-6-6', title: 'II. Dünya Savaşı ve Sonrası Dünya' },
+          { id: 'tar-6-1', title: 'Siyasi, Hukuki ve Eğitim Alanındaki İnkılaplar' },
+          { id: 'tar-6-2', title: 'Toplumsal ve Ekonomik İnkılaplar' },
+          { id: 'tar-6-3', title: 'Atatürk İlkeleri (Altı Temel İlke)' },
+        ],
+      },
+      {
+        id: 'tar-7',
+        title: 'Atatürk dönemi iç ve dış politika',
+        weight: 3,
+        subtopics: [
+          { id: 'tar-7-1', title: 'Atatürk Dönemi İç Politika ve Çok Partili Hayat Denemeleri' },
+          { id: 'tar-7-2', title: 'Atatürk Dönemi Türk Dış Politikası (Milletler Cemiyeti, Boğazlar, Hatay)' },
+        ],
+      },
+      {
+        id: 'tar-8',
+        title: 'Çağdaş Türk ve dünya tarihi',
+        weight: 2,
+        subtopics: [
+          { id: 'tar-8-1', title: '20. Yüzyıl Başlarında Dünya ve II. Dünya Savaşı' },
+          { id: 'tar-8-2', title: 'Soğuk Savaş Dönemi, Yumuşama ve Küreselleşen Dünya' },
+          { id: 'tar-8-3', title: 'Türk Dünyası ve Bağımsız Türk Cumhuriyetleri' },
         ],
       },
     ],
@@ -275,125 +113,81 @@ export const INITIAL_CURRICULUM = [
     topics: [
       {
         id: 'cog-1',
-        title: 'Türkiye Fiziki Coğrafyası',
-        weight: 6,
+        title: 'Türkiye’nin Coğrafi Konumu',
+        weight: 2,
         subtopics: [
-          { id: 'cog-1-1', title: 'Türkiye\'nin Konumu ve Sınırları' },
-          { id: 'cog-1-2', title: 'Yeryüzü Şekilleri (Dağlar, Ovalar, Platolar)' },
-          { id: 'cog-1-3', title: 'İklim Tipleri ve Özellikleri' },
-          { id: 'cog-1-4', title: 'Akarsular ve Göller' },
-          { id: 'cog-1-5', title: 'Doğal Bitki Örtüsü ve Toprak Tipleri' },
+          { id: 'cog-1-1', title: 'Mutlak (Matematik) Konum ve Sonuçları' },
+          { id: 'cog-1-2', title: 'Göreceli (Özel) Konum ve Jeopolitik Konum' },
+          { id: 'cog-1-3', title: 'Türkiye’nin Saat Dilimleri ve Sınır Komşuları' },
         ],
       },
       {
         id: 'cog-2',
-        title: 'Türkiye Beşeri ve Ekonomik Coğrafyası',
-        weight: 5,
+        title: 'Türkiye’nin Fiziki Özellikleri',
+        weight: 3,
         subtopics: [
-          { id: 'cog-2-1', title: 'Nüfus ve Yerleşme (Kır-Kent, Göç)' },
-          { id: 'cog-2-2', title: 'Tarım Bölgeleri ve Ürünler' },
-          { id: 'cog-2-3', title: 'Hayvancılık, Ormancılık, Balıkçılık' },
-          { id: 'cog-2-4', title: 'Madencilik, Enerji Kaynakları ve Sanayi' },
-          { id: 'cog-2-5', title: 'Ulaşım ve Ticaret' },
+          { id: 'cog-2-1', title: 'Yer Şekilleri, Dağlar, Ovalar ve Platolar' },
+          { id: 'cog-2-2', title: 'Türkiye’nin Akarsuları, Gölleri ve Kıyıları' },
+          { id: 'cog-2-3', title: 'Jeolojik Yapı, Depremler ve Volkanizma' },
         ],
       },
       {
         id: 'cog-3',
-        title: 'Bölgesel Coğrafya ve Haritalar',
+        title: 'Türkiye’nin İklimi ve Bitki Örtüsü',
         weight: 3,
         subtopics: [
-          { id: 'cog-3-1', title: 'Türkiye\'nin Coğrafi Bölgeleri (7 Bölge)' },
-          { id: 'cog-3-2', title: 'Harita Bilgisi ve Projeksiyon Sistemleri' },
+          { id: 'cog-3-1', title: 'Sıcaklık, Basınç, Rüzgarlar ve Nemlilik' },
+          { id: 'cog-3-2', title: 'Türkiye’deki İklim Tipleri (Akdeniz, Karadeniz, Karasal)' },
+          { id: 'cog-3-3', title: 'Bitki Örtüsü ve Toprak Tipleri' },
         ],
       },
       {
         id: 'cog-4',
-        title: 'Fiziki Coğrafya (Genel)',
-        weight: 4,
-        subtopics: [
-          { id: 'cog-4-1', title: 'Dünya\'nın Şekli, Hareketleri ve Koordinat Sistemi' },
-          { id: 'cog-4-2', title: 'Litosfer (Yer Kabuğu, Depremler, Volkanizma)' },
-          { id: 'cog-4-3', title: 'Hidrosfer (Okyanuslar, Denizler, Akarsular)' },
-          { id: 'cog-4-4', title: 'Atmosfer (Hava Kütleleri, Cephe Sistemleri, İklimler)' },
-        ],
-      },
-    ],
-  },
-
-  // ----------------------------------------------------------------
-  // VATANDAŞLIK (ANAYASA & HUK.) — 9 Soru (Genel Kültür)
-  // ----------------------------------------------------------------
-  {
-    id: 'vatandaslik',
-    name: 'Vatandaşlık',
-    colorClass: 'subject-vatandaslik',
-    accentColor: '#22D3EE',
-    icon: '⚖️',
-    totalWeight: 9,
-    topics: [
-      {
-        id: 'vat-1',
-        title: 'Temel Hukuk Kavramları',
+        title: 'Türkiye’de Nüfus ve Yerleşme',
         weight: 2,
         subtopics: [
-          { id: 'vat-1-1', title: 'Hukukun Tanımı, Dalları ve Kaynakları' },
-          { id: 'vat-1-2', title: 'Kamu Hukuku – Özel Hukuk Ayrımı' },
+          { id: 'cog-4-1', title: 'Nüfusun Dağılışı, Yoğunluğu ve Demografik Yapı' },
+          { id: 'cog-4-2', title: 'Göçler (İç Göç, Dış Göç) ve Nüfus Piramitleri' },
+          { id: 'cog-4-3', title: 'Kır ve Kent Yerleşmeleri, Mesken Tipleri' },
         ],
       },
       {
-        id: 'vat-2',
-        title: 'Türkiye Cumhuriyeti Anayasası',
-        weight: 4,
+        id: 'cog-5',
+        title: 'Türkiye\'de Tarım, Hayvancılık ve Ormancılık',
+        weight: 2,
         subtopics: [
-          { id: 'vat-2-1', title: 'Anayasal Düzen ve Devletin Temel Nitelikleri' },
-          { id: 'vat-2-2', title: 'Temel Hak ve Özgürlükler' },
-          { id: 'vat-2-3', title: 'Yasama (TBMM) Organı' },
-          { id: 'vat-2-4', title: 'Yürütme (Cumhurbaşkanı ve Bakanlar)' },
-          { id: 'vat-2-5', title: 'Yargı Organları (Anayasa Mah., Danıştay, Yargıtay)' },
+          { id: 'cog-5-1', title: 'Tarım Ürünleri ve Tarım Bölgeleri' },
+          { id: 'cog-5-2', title: 'Hayvancılık Türleri ve Dağılışı' },
+          { id: 'cog-5-3', title: 'Ormancılık ve Orman Ürünleri' },
         ],
       },
       {
-        id: 'vat-3',
-        title: 'Seçim ve Siyasi Sistem',
-        weight: 3,
+        id: 'cog-6',
+        title: 'Türkiye\'de Madenler, Enerji Kaynakları, Sanayi ve Endüstri',
+        weight: 2,
         subtopics: [
-          { id: 'vat-3-1', title: 'Seçim Sistemi ve Seçim İlkeleri' },
-          { id: 'vat-3-2', title: 'Siyasi Partiler ve Sendikalar' },
-          { id: 'vat-3-3', title: 'Kamu Yönetimi ve Yerel Yönetimler' },
-        ],
-      },
-    ],
-  },
-
-  // ----------------------------------------------------------------
-  // GÜNCEL BİLGİLER — 6 Soru (Genel Kültür)
-  // ----------------------------------------------------------------
-  {
-    id: 'guncel',
-    name: 'Güncel Bilgiler',
-    colorClass: 'subject-guncel',
-    accentColor: '#FBBF24',
-    icon: '📰',
-    totalWeight: 6,
-    topics: [
-      {
-        id: 'gun-1',
-        title: 'Türkiye Güncel Gelişmeler',
-        weight: 3,
-        subtopics: [
-          { id: 'gun-1-1', title: 'Son 1 Yıl Siyasi ve Ekonomik Gelişmeler' },
-          { id: 'gun-1-2', title: 'Uluslararası İlişkiler ve Türkiye' },
-          { id: 'gun-1-3', title: 'Kültür, Spor ve Teknoloji Haberleri' },
+          { id: 'cog-6-1', title: 'Metalik ve Ametal Madenler' },
+          { id: 'cog-6-2', title: 'Enerji Kaynakları (Yenilenebilir ve Yenilenemeyen)' },
+          { id: 'cog-6-3', title: 'Sanayi Kolları ve Tesis Dağılışı' },
         ],
       },
       {
-        id: 'gun-2',
-        title: 'Dünya Güncel Gelişmeler',
-        weight: 3,
+        id: 'cog-7',
+        title: 'Türkiye\'de Ulaşım, Ticaret ve Turizm',
+        weight: 2,
         subtopics: [
-          { id: 'gun-2-1', title: 'Uluslararası Örgütler (BM, AB, NATO, AGİT)' },
-          { id: 'gun-2-2', title: 'Küresel Ekonomi ve Ticaret' },
-          { id: 'gun-2-3', title: 'Dünyada Güncel Siyasi Gelişmeler' },
+          { id: 'cog-7-1', title: 'Ulaşım Sistemleri (Karayolu, Demiryolu, Denizyolu, Havayolu)' },
+          { id: 'cog-7-2', title: 'İç ve Dış Ticaret, İhrakat-İthalat Ürünleri' },
+          { id: 'cog-7-3', title: 'Turizm Çeşitleri ve Turizm Varlıkları' },
+        ],
+      },
+      {
+        id: 'cog-8',
+        title: 'Türkiye\'de Bölgeler Coğrafyası',
+        weight: 2,
+        subtopics: [
+          { id: 'cog-8-1', title: 'Coğrafi Bölge ve Bölüm Özellikleri' },
+          { id: 'cog-8-2', title: 'Bölgesel Kalkınma Projeleri (GAP, DAP, DOKAP, ZBK vb.)' },
         ],
       },
     ],

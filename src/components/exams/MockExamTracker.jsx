@@ -8,10 +8,6 @@ import {
 const SUBJECTS = [
   { id: 'turkce', label: 'Türkçe', max: 30, color: '#38BDF8' },
   { id: 'matematik', label: 'Matematik', max: 30, color: '#C084FC' },
-  { id: 'tarih', label: 'Tarih', max: 27, color: '#F87171' },
-  { id: 'cografya', label: 'Coğrafya', max: 18, color: '#34D399' },
-  { id: 'vatandaslik', label: 'Vatandaşlık', max: 9, color: '#22D3EE' },
-  { id: 'guncel', label: 'Güncel Bilgiler', max: 6, color: '#FBBF24' },
 ];
 
 function calcNet(correct, wrong) {
@@ -68,10 +64,10 @@ function AddExamModal({ onClose }) {
       const w = parseFloat(scores[s.id].wrong) || 0;
       parsedScores[s.id] = { correct: c, wrong: w, net: calcNet(c, w) };
     }
-    saveExam(title || `Deneme ${state.exams.length + 1}`, date, parsedScores);
+    saveExam(title || `GY Denemesi ${state.exams.length + 1}`, date, parsedScores);
     if (state.exams.length === 0) unlockBadge('first_exam');
     const totalNet = Object.values(parsedScores).reduce((sum, s) => sum + s.net, 0);
-    if (totalNet >= 60) unlockBadge('high_net');
+    if (totalNet >= 45) unlockBadge('high_net');
     onClose();
   };
 
@@ -91,10 +87,10 @@ function AddExamModal({ onClose }) {
         </button>
 
         <h3 className="font-black text-[#F5F5F0] text-xl mb-1 flex items-center gap-2.5">
-          <span className="text-[#38BDF8]">📝</span> Deneme Sınavı Kaydet
+          <span className="text-[#38BDF8]">📝</span> Genel Yetenek Denemesi Kaydet
         </h3>
         <p className="text-xs text-[#9E9E9E] mb-5">
-          KPSS 120 Soru Dağılımına göre soru limitleri otomatik denetlenir.
+          Türkçe (30 Soru) ve Matematik (30 Soru) olmak üzere 60 Soru Genel Yetenek deneme sonucunuzu girin.
         </p>
 
         {errorMsg && (
@@ -266,15 +262,16 @@ export default function MockExamTracker() {
   const activeSubject = SUBJECTS.find(s => s.id === activeFilter);
   const activeColor = activeFilter === 'total' ? '#FF6B00' : (activeSubject?.color || '#FF6B00');
   const activeLabel = activeFilter === 'total' ? 'Toplam Net' : activeSubject?.label;
-  const maxAxisDomain = activeFilter === 'total' ? 120 : (activeSubject?.max || 30);
+  const maxAxisDomain = activeFilter === 'total' ? 60 : (activeSubject?.max || 30);
 
   return (
     <div className="fade-slide-up flex flex-col gap-8 md:gap-10 pb-8">
       {/* Header Banner */}
       <div className="glass-card p-6 md:p-8 border-0 bg-[#26262A] text-center shadow-xl rounded-[28px]">
         <h2 className="text-2xl font-black text-[#F5F5F0] flex items-center justify-center gap-2.5 tracking-tight">
-          <BarChart2 size={26} className="text-[#FF6B00]" /> Deneme Sınavları & Net Analizi
+          <BarChart2 size={26} className="text-[#FF6B00]" /> Genel Yetenek Deneme Analizi (Türkçe & Matematik)
         </h2>
+        <p className="text-xs text-[#9E9E9E] mt-1 font-medium">60 Soru Genel Yetenek (Türkçe: 30 Soru, Matematik: 30 Soru) performans takibi</p>
       </div>
 
       {/* 3 Metric Cards */}

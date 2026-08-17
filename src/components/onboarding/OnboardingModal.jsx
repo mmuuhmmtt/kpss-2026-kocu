@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { User, Target, Sparkles, ArrowRight } from 'lucide-react';
-
-const NET_PRESETS = [60, 75, 85, 95, 105, 115];
+import { User, ArrowRight, ShieldCheck, Sparkles, AlertCircle } from 'lucide-react';
 
 const capitalizeWords = (str) => {
   if (!str) return '';
@@ -16,18 +14,9 @@ export default function OnboardingModal() {
   const { state, saveUserProfile } = useApp();
   const [name, setName] = useState(state.userProfile?.name || '');
   const [surname, setSurname] = useState(state.userProfile?.surname || '');
-  const [targetNet, setTargetNet] = useState(state.userProfile?.targetNet || 85);
   const [error, setError] = useState('');
 
   if (state.userProfile?.onboardingCompleted) return null;
-
-  const handleNameChange = (val) => {
-    setName(val);
-  };
-
-  const handleSurnameChange = (val) => {
-    setSurname(val);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,141 +24,104 @@ export default function OnboardingModal() {
       setError('Lütfen adınızı giriniz.');
       return;
     }
+    setError('');
     const formattedName = capitalizeWords(name.trim());
     const formattedSurname = capitalizeWords(surname.trim());
     saveUserProfile({
       name: formattedName,
       surname: formattedSurname,
-      targetNet: Number(targetNet),
+      targetNet: 35, // default target net internally
     });
   };
 
-  const sliderPct = Math.round(((targetNet - 40) / (120 - 40)) * 100);
-
   return (
-    <div className="modal-backdrop p-4 md:p-8 flex items-center justify-center overflow-y-auto">
-      <div className="glass-card max-w-lg w-full p-8 md:p-12 border-0 bg-[#26262A] shadow-2xl rounded-[36px] fade-slide-up relative my-auto">
+    <div className="fixed inset-0 z-50 p-4 sm:p-6 md:p-8 flex items-center justify-center bg-black/85 backdrop-blur-2xl overflow-y-auto">
+      
+      {/* Background Radial Neon Orange Mesh Glow */}
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#FF6B00]/20 via-[#0B0C0E]/95 to-[#0B0C0E] pointer-events-none" />
+
+      {/* Main SaaS Glassmorphism Card in Neon Orange Accents */}
+      <div className="w-full max-w-md bg-[#18181C]/90 backdrop-blur-xl border border-[#FF6B00]/30 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] rounded-[32px] p-6 sm:p-10 fade-slide-up relative my-auto border-t border-t-white/10">
         
-        {/* Header with High Vertical Separation */}
-        <div className="text-center mb-10 relative z-10">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#1A1A1D] text-[#FF6B00] text-xs font-black uppercase tracking-wider mb-4 shadow-inner border border-[#26262A]">
-            <Sparkles size={15} className="text-[#FF6B00]" />
-            <span>KPSS 2026 KOÇUNUZ</span>
+        {/* Subtle Ambient Neon Glow */}
+        <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-48 h-48 bg-[#FF6B00]/15 rounded-full blur-3xl pointer-events-none" />
+
+        {/* Top Header Badge */}
+        <div className="relative z-10 text-center mb-7">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FF6B00]/10 border border-[#FF6B00]/25 text-[#FF6B00] text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
+            <ShieldCheck size={14} className="text-[#FF6B00]" />
+            <span>KPSS 2026 — Tarih & Coğrafya Koçu</span>
           </div>
-          <h2 className="text-2xl md:text-3xl font-black text-[#F5F5F0] tracking-tight">Hoş Geldin! Profilini Oluştur</h2>
-          <p className="text-xs md:text-sm text-[#9E9E9E] mt-2 font-medium">Sana özel çalışma hedeflerini ve net beklentini belirleyelim</p>
+
+          <h2 className="text-2xl sm:text-3xl font-black text-[#F5F5F0] tracking-tight leading-snug">
+            Hoş Geldiniz!
+          </h2>
+          <p className="text-xs sm:text-sm text-[#9E9E9E] mt-2 font-medium leading-relaxed">
+            Sana özel çalışma takvimi ve konu takibini başlatmak için adınızı giriniz.
+          </p>
         </div>
 
-        {error && (
-          <div className="mb-8 p-4 rounded-2xl bg-[#1A1A1D] text-[#F87171] text-xs font-bold text-center shadow-inner border border-[#F87171]/20">
-            {error}
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
+        {/* SINGLE STEP NAME FORM */}
+        <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
           
-          {/* Name & Surname Fields with Tall Inputs */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div className="space-y-5">
+            {/* Adınız Input */}
             <div>
-              <label className="block text-xs font-extrabold text-[#F5F5F0] mb-2.5 flex items-center gap-1.5">
+              <label className="block text-xs font-bold text-[#F5F5F0] uppercase tracking-wider mb-2 flex items-center gap-1.5">
                 <User size={15} className="text-[#FF6B00]" /> Adınız *
               </label>
-              <input
-                type="text"
-                required
-                value={name}
-                onChange={(e) => handleNameChange(e.target.value)}
-                onBlur={() => setName(capitalizeWords(name))}
-                placeholder="Örn: Ahmet"
-                className="w-full h-14 px-5 rounded-2xl bg-[#1A1A1D] border border-[#333338] text-[#F5F5F0] placeholder-[#9E9E9E] text-sm font-bold focus:outline-none focus:border-[#FF6B00] shadow-inner transition-colors"
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs font-extrabold text-[#F5F5F0] mb-2.5 flex items-center gap-1.5">
-                <User size={15} className="text-[#FF6B00]" /> Soyadınız
-              </label>
-              <input
-                type="text"
-                value={surname}
-                onChange={(e) => handleSurnameChange(e.target.value)}
-                onBlur={() => setSurname(capitalizeWords(surname))}
-                placeholder="Örn: Yılmaz"
-                className="w-full h-14 px-5 rounded-2xl bg-[#1A1A1D] border border-[#333338] text-[#F5F5F0] placeholder-[#9E9E9E] text-sm font-bold focus:outline-none focus:border-[#FF6B00] shadow-inner transition-colors"
-              />
-            </div>
-          </div>
-
-          {/* TARGET NET SLIDER CONTAINER */}
-          <div className="bg-[#1A1A1D] p-7 rounded-[28px] shadow-inner border border-[#26262A] space-y-6">
-            
-            <div className="flex justify-between items-center pb-2 border-b border-[#26262A]">
-              <label className="text-xs md:text-sm font-extrabold text-[#F5F5F0] flex items-center gap-2">
-                <Target size={18} className="text-[#FF6B00]" /> Hedeflenen KPSS Netiniz:
-              </label>
-              <div
-                className="px-4 py-1.5 rounded-full bg-[#FF6B00] text-[#1A1A1D] font-black text-sm shadow-md"
-                style={{ fontFamily: "'Orbitron', monospace", filter: 'drop-shadow(0 0 8px rgba(255, 107, 0, 0.45))' }}
-              >
-                {targetNet} Net
-              </div>
-            </div>
-
-            {/* Slider Control */}
-            <div className="relative py-4 my-2">
-              <div className="h-4 bg-[#26262A] rounded-full overflow-hidden p-0.5 shadow-inner">
-                <div
-                  className="h-full rounded-full bg-[#FF6B00] transition-all duration-150"
-                  style={{ width: `${sliderPct}%`, boxShadow: '0 0 12px rgba(255, 107, 0, 0.5)' }}
+              <div className="relative">
+                <input
+                  type="text"
+                  required
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    if (error) setError('');
+                  }}
+                  onBlur={() => setName(capitalizeWords(name))}
+                  placeholder="Örn: Ahmet"
+                  className="w-full h-14 px-5 bg-[#121214] border border-white/10 rounded-2xl text-[#F5F5F0] placeholder-[#707074] text-sm font-bold focus:outline-none focus:border-[#FF6B00] focus:ring-2 focus:ring-[#FF6B00]/20 transition-all shadow-inner"
                 />
               </div>
-              <input
-                type="range"
-                min="40"
-                max="120"
-                step="1"
-                value={targetNet}
-                onChange={(e) => setTargetNet(Number(e.target.value))}
-                className="w-full h-6 opacity-0 cursor-pointer absolute inset-0 z-10"
-              />
+
+              {error && (
+                <div className="animate-shake text-[#F87171] text-xs font-bold flex items-center gap-1.5 mt-2 pl-1">
+                  <AlertCircle size={14} className="text-[#F87171] flex-shrink-0" />
+                  <span>{error}</span>
+                </div>
+              )}
             </div>
 
-            {/* Quick Click Preset Net Chips */}
+            {/* Soyadınız Input */}
             <div>
-              <div className="text-xs font-bold text-[#9E9E9E] uppercase tracking-wider mb-3">Hızlı Net Seçimi</div>
-              <div className="grid grid-cols-6 gap-2.5">
-                {NET_PRESETS.map(preset => {
-                  const isActive = Number(targetNet) === preset;
-                  return (
-                    <button
-                      key={preset}
-                      type="button"
-                      onClick={() => setTargetNet(preset)}
-                      className={`py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer text-center ${
-                        isActive
-                          ? 'bg-[#FF6B00] text-[#1A1A1D] shadow-md scale-105'
-                          : 'bg-[#26262A] text-[#9E9E9E] hover:text-[#F5F5F0] hover:bg-[#2E2E33]'
-                      }`}
-                    >
-                      {preset}
-                    </button>
-                  );
-                })}
+              <label className="block text-xs font-bold text-[#F5F5F0] uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                <User size={15} className="text-[#FF6B00]" /> Soyadınız
+              </label>
+              <div className="relative">
+                <input
+                  type="text"
+                  value={surname}
+                  onChange={(e) => setSurname(e.target.value)}
+                  onBlur={() => setSurname(capitalizeWords(surname))}
+                  placeholder="Örn: Yılmaz (Opsiyonel)"
+                  className="w-full h-14 px-5 bg-[#121214] border border-white/10 rounded-2xl text-[#F5F5F0] placeholder-[#707074] text-sm font-bold focus:outline-none focus:border-[#FF6B00] focus:ring-2 focus:ring-[#FF6B00]/20 transition-all shadow-inner"
+                />
               </div>
             </div>
           </div>
 
-          {/* Tall Neon Orange Submit Button */}
-          <div className="pt-4">
+          {/* Neon Orange Primary Action Button */}
+          <div className="pt-3">
             <button
               type="submit"
-              className="w-full h-16 rounded-full bg-[#FF6B00] text-[#1A1A1D] font-black text-base hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 cursor-pointer shadow-2xl"
-              style={{ filter: 'drop-shadow(0 0 16px rgba(255, 107, 0, 0.5))' }}
+              className="w-full h-15 rounded-2xl bg-[#FF6B00] hover:bg-[#FF8533] text-[#1A1A1D] font-black text-base shadow-xl shadow-[#FF6B00]/20 hover:shadow-[#FF6B00]/40 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center gap-2.5 cursor-pointer"
             >
               <span>Planımı Oluştur ve Başla</span>
               <ArrowRight size={20} className="stroke-[3]" />
             </button>
           </div>
+
         </form>
 
       </div>
