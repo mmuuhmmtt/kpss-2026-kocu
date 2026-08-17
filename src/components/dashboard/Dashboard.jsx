@@ -65,7 +65,7 @@ export default function Dashboard() {
   const reviews = getTodayReviews();
 
   return (
-    <div className="w-full max-w-3xl mx-auto flex flex-col gap-6 md:gap-8 items-center text-center fade-slide-up pb-8">
+    <div className="w-full flex flex-col gap-6 md:gap-8 fade-slide-up pb-8">
       
       {/* 1. Sınav Kalan Süre Sayacı */}
       <div className="w-full">
