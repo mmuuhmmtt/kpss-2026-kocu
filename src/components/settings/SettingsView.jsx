@@ -139,17 +139,16 @@ export default function SettingsView() {
       )}
 
       {/* Navigation Tabs - Modern Pill */}
-      <div className="flex gap-2 bg-[#1A1A1D] p-1.5 rounded-full shadow-inner border border-[#26262A]">
+      <div className="flex gap-2 bg-[#111113] p-1.5 rounded-2xl border border-white/10 shadow-inner">
         {[['curriculum', '📚 Müfredat Düzenleyici'], ['backup', '🔄 İlerleme & Veri Sıfırlama']].map(([id, label]) => (
           <button
             key={id}
             onClick={() => setActiveTab(id)}
-            className={`flex-1 py-2.5 px-4 rounded-full text-xs font-black transition-all cursor-pointer ${
+            className={`flex-1 py-2.5 px-4 rounded-xl text-xs font-black transition-all cursor-pointer ${
               activeTab === id
-                ? 'bg-[#FF6B00] text-[#1A1A1D] shadow-md scale-[1.02]'
-                : 'text-[#9E9E9E] hover:text-[#F5F5F0] hover:bg-[#26262A]'
+                ? 'bg-[#FF6B00] text-slate-950 shadow-md shadow-[#FF6B00]/20'
+                : 'text-slate-400 hover:text-white hover:bg-white/5'
             }`}
-            style={activeTab === id ? { filter: 'drop-shadow(0 0 8px rgba(255, 107, 0, 0.45))' } : {}}
           >
             {label}
           </button>
@@ -159,17 +158,17 @@ export default function SettingsView() {
       {activeTab === 'curriculum' && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-base font-extrabold text-[#F5F5F0]">Müfredat & Soru Ağırlıkları</h3>
+            <h3 className="text-base font-extrabold text-white">Müfredat & Soru Ağırlıkları</h3>
             <div className="flex gap-2">
               <button
                 onClick={handleResetCurriculum}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-2xl text-xs font-bold text-[#9E9E9E] hover:text-[#F5F5F0] bg-[#1A1A1D] shadow-inner transition-all cursor-pointer"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-2xl text-xs font-bold text-slate-400 hover:text-white bg-[#111113] border border-white/10 shadow-inner transition-all cursor-pointer"
               >
                 <RotateCcw size={14} /> Varsayılan
               </button>
               <button
                 onClick={handleSaveCurriculum}
-                className="flex items-center gap-1.5 px-5 py-2.5 rounded-2xl text-xs font-black text-[#1A1A1D] bg-[#F5F5F0] hover:opacity-90 transition-all cursor-pointer shadow-md"
+                className="flex items-center gap-1.5 px-5 py-2.5 rounded-2xl text-xs font-black text-slate-950 bg-[#FF6B00] hover:bg-[#FF8533] transition-all cursor-pointer shadow-lg shadow-[#FF6B00]/20"
               >
                 <Save size={14} /> {saved ? 'Kaydedildi!' : 'Değişiklikleri Kaydet'}
               </button>
@@ -177,7 +176,7 @@ export default function SettingsView() {
           </div>
 
           {curriculum.map((subject, sIdx) => (
-            <div key={subject.id} className="glass-card p-6 border-0 bg-[#26262A] shadow-xl rounded-[28px]">
+            <div key={subject.id} className="p-6 bg-[#16171C]/90 backdrop-blur-xl border border-white/10 shadow-2xl rounded-3xl">
               {/* Subject header */}
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-2xl">{subject.icon}</span>

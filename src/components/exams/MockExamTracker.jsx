@@ -267,37 +267,43 @@ export default function MockExamTracker() {
   return (
     <div className="fade-slide-up flex flex-col gap-8 md:gap-10 pb-8">
       {/* Header Banner */}
-      <div className="glass-card p-6 md:p-8 border-0 bg-[#26262A] text-center shadow-xl rounded-[28px]">
-        <h2 className="text-2xl font-black text-[#F5F5F0] flex items-center justify-center gap-2.5 tracking-tight">
+      <div className="p-6 md:p-8 bg-[#16171C]/90 backdrop-blur-xl border border-white/10 text-center shadow-2xl rounded-[28px]">
+        <h2 className="text-2xl font-black text-white flex items-center justify-center gap-2.5 tracking-tight">
           <BarChart2 size={26} className="text-[#FF6B00]" /> Genel Yetenek Deneme Analizi (Türkçe & Matematik)
         </h2>
-        <p className="text-xs text-[#9E9E9E] mt-1 font-medium">60 Soru Genel Yetenek (Türkçe: 30 Soru, Matematik: 30 Soru) performans takibi</p>
+        <p className="text-xs text-slate-400 mt-1 font-medium">60 Soru Genel Yetenek (Türkçe: 30 Soru, Matematik: 30 Soru) performans takibi</p>
       </div>
 
       {/* 3 Metric Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div className="glass-card p-6 border-0 bg-[#26262A] shadow-lg rounded-[24px]">
-          <div className="text-xs font-black uppercase tracking-wider text-[#FBBF24] mb-1">ÇÖZÜLEN DENEME</div>
-          <div className="text-4xl font-black text-[#FBBF24]" style={{ fontFamily: "'Orbitron', monospace", filter: 'drop-shadow(0 0 8px rgba(251, 191, 36, 0.4))' }}>
+        <div className="p-6 bg-[#1F170C]/90 backdrop-blur-xl border border-amber-500/30 shadow-2xl rounded-[24px]">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-xs font-black uppercase tracking-wider text-amber-400">ÇÖZÜLEN DENEME</span>
+          </div>
+          <div className="text-4xl font-black text-amber-400 mb-1 font-mono">
             {state.exams.length}
           </div>
-          <div className="text-xs text-[#9E9E9E] mt-1">Kaydedilen toplam deneme</div>
+          <div className="text-xs text-slate-400 font-medium">Kaydedilen toplam deneme</div>
         </div>
 
-        <div className="glass-card p-6 border-0 bg-[#26262A] shadow-lg rounded-[24px]">
-          <div className="text-xs font-black uppercase tracking-wider text-[#34D399] mb-1">EN YÜKSEK NET</div>
-          <div className="text-4xl font-black text-[#34D399]" style={{ fontFamily: "'Orbitron', monospace", filter: 'drop-shadow(0 0 8px rgba(52, 211, 153, 0.4))' }}>
+        <div className="p-6 bg-[#0B2019]/90 backdrop-blur-xl border border-emerald-500/30 shadow-2xl rounded-[24px]">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-xs font-black uppercase tracking-wider text-emerald-400">EN YÜKSEK NET</span>
+          </div>
+          <div className="text-4xl font-black text-emerald-400 mb-1 font-mono">
             {bestTotal.toFixed(1)}
           </div>
-          <div className="text-xs text-[#9E9E9E] mt-1">Rekor net puanın</div>
+          <div className="text-xs text-slate-400 font-medium">Rekor net puanın</div>
         </div>
 
-        <div className="glass-card p-6 border-0 bg-[#26262A] shadow-lg rounded-[24px]">
-          <div className="text-xs font-black uppercase tracking-wider text-[#C084FC] mb-1">ORTALAMA NET</div>
-          <div className="text-4xl font-black text-[#C084FC]" style={{ fontFamily: "'Orbitron', monospace", filter: 'drop-shadow(0 0 8px rgba(192, 132, 252, 0.4))' }}>
+        <div className="p-6 bg-[#1A122C]/90 backdrop-blur-xl border border-purple-500/30 shadow-2xl rounded-[24px]">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-xs font-black uppercase tracking-wider text-purple-400">ORTALAMA NET</span>
+          </div>
+          <div className="text-4xl font-black text-purple-400 mb-1 font-mono">
             {avgTotal.toFixed(1)}
           </div>
-          <div className="text-xs text-[#9E9E9E] mt-1">Tüm denemelerin ortalaması</div>
+          <div className="text-xs text-slate-400 font-medium">Tüm denemelerin ortalaması</div>
         </div>
       </div>
 
