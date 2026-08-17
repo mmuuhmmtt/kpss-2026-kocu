@@ -31,34 +31,25 @@ function MotivationBanner() {
       {/* Warm Amber Radial Glow */}
       <div className="absolute top-0 right-0 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 space-y-4">
-        
-        {/* Badge Header */}
-        <div className="flex items-center justify-between">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-black uppercase tracking-wider shadow-sm">
-            <Compass size={14} className="text-amber-400" />
-            <span>Günün KPSS Koçluk Tavsiyesi</span>
+      <div className="relative z-10">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex items-start gap-3.5 flex-1">
+            <Quote size={32} className="text-amber-400 flex-shrink-0 opacity-90 mt-0.5" />
+            <p className="text-base sm:text-xl font-bold text-amber-100 italic leading-snug tracking-tight">
+              "{MOTIVATION_NOTES[index]}"
+            </p>
           </div>
 
           <button
             type="button"
             onClick={handleNextQuote}
-            className="flex items-center gap-1.5 text-xs text-amber-400 hover:text-amber-300 font-extrabold transition-colors cursor-pointer px-3 py-1 rounded-xl bg-amber-500/10 border border-amber-500/20"
-            title="Başka Tavsiye Göster"
+            className="flex items-center gap-1.5 text-xs text-amber-400 hover:text-amber-300 font-extrabold transition-colors cursor-pointer px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/20 flex-shrink-0"
+            title="Başka Not Göster"
           >
             <RefreshCw size={13} className="group-hover:rotate-180 transition-transform duration-500" />
-            <span className="hidden sm:inline">Yeni Tavsiye</span>
+            <span className="hidden sm:inline">Değiştir</span>
           </button>
         </div>
-
-        {/* Large Prominent Quote Text */}
-        <div className="flex items-start gap-4 pt-1">
-          <Quote size={32} className="text-amber-400 flex-shrink-0 opacity-80 mt-1" />
-          <p className="text-base sm:text-xl font-bold text-amber-100 italic leading-snug tracking-tight">
-            "{MOTIVATION_NOTES[index]}"
-          </p>
-        </div>
-
       </div>
     </div>
   );
