@@ -3,53 +3,58 @@ import { useApp } from '../../context/AppContext';
 import ExamCountdown from './ExamCountdown';
 import TargetNetWidget from './TargetNetWidget';
 import DailyPracticeWidget from './DailyPracticeWidget';
-import { RotateCcw, BookOpen, ArrowRight, Quote, Sparkles, RefreshCw, Compass } from 'lucide-react';
+import { RotateCcw, BookOpen, ArrowRight, Quote, RefreshCw } from 'lucide-react';
 
-const MOTIVATION_NOTES = [
-  "Tarih ve Coğrafya'da derece yapanlar; kronoloji takibini, harita okumayı ve düzenli soru tekrarını alışkanlık edinenlerdir.",
-  "Her gün aksatmadan çözeceğin 30 Türkçe ve 30 Matematik sorusu, sınav günü seni hedeflediğin yüksek puana taşıyacak.",
-  "Kurtuluş Savaşı kongreleri ve Atatürk inkılapları KPSS Tarih'in en çok soru çıkan kalbidir; konu eksiklerini hemen kapat!",
-  "Coğrafya madenler, iklim ve nüfus soruları ezber değil harita mantığı işidir. Haritaya bakarak çalış, netlerini katla!",
-  "Bugün atacağın her disiplinli adım, sınav sonuçları açıklandığında hissedeceğin o büyük gururun temelidir. Vazgeçme ve devam et!"
+const GENERAL_MOTIVATION_NOTES = [
+  "Zorluklar, başarının değerini artıran en güzel vesilelerdir. İnançla çalışmaya devam et!",
+  "Bugün harcadığın her dakika ve döktüğün her alın teri, yarın yaşayacağın büyük başarının teminatıdır.",
+  "Büyük zaferler, her gün aksatılmadan atılan küçük fakat kararlı adımlarla kazanılır.",
+  "Disiplin; ne istediğin ile şu an neye meyilli olduğun arasındaki seçimdir. İradene güven!",
+  "Başarı bir tesadüf değil; emek, kararlılık, öğrenme ve en önemlisi vazgeçmeme tercihidir.",
+  "Hayallerinin büyüklüğü, karşılaştığın engellerin büyüklüğünden daima daha güçlü olsun!"
 ];
 
 function MotivationBanner() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const randomIdx = Math.floor(Math.random() * MOTIVATION_NOTES.length);
+    const randomIdx = Math.floor(Math.random() * GENERAL_MOTIVATION_NOTES.length);
     setIndex(randomIdx);
   }, []);
 
   const handleNextQuote = () => {
-    setIndex((prev) => (prev + 1) % MOTIVATION_NOTES.length);
+    setIndex((prev) => (prev + 1) % GENERAL_MOTIVATION_NOTES.length);
   };
 
   return (
-    <div className="p-6 sm:p-8 bg-[#1A140E]/90 backdrop-blur-xl border border-amber-500/30 shadow-[0_20px_50px_-15px_rgba(245,158,11,0.2)] rounded-[28px] relative overflow-hidden group">
+    <div className="p-6 sm:p-8 bg-[#1A140E]/90 backdrop-blur-xl border border-amber-500/30 shadow-[0_20px_50px_-15px_rgba(245,158,11,0.2)] rounded-[28px] relative overflow-hidden group w-full text-center">
       
       {/* Warm Amber Radial Glow */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 left-0 bottom-0 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10">
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex items-start gap-3.5 flex-1">
-            <Quote size={32} className="text-amber-400 flex-shrink-0 opacity-90 mt-0.5" />
-            <p className="text-base sm:text-xl font-bold text-amber-100 italic leading-snug tracking-tight">
-              "{MOTIVATION_NOTES[index]}"
-            </p>
-          </div>
+      <div className="relative z-10 flex flex-col items-center justify-center space-y-4 text-center">
+        
+        {/* Quote Icon & Text Centered */}
+        <div className="flex flex-col items-center justify-center space-y-3 max-w-2xl mx-auto">
+          <Quote size={32} className="text-amber-400 opacity-90 mx-auto" />
+          <p className="text-base sm:text-xl font-bold text-amber-100 italic leading-snug tracking-tight text-center">
+            "{GENERAL_MOTIVATION_NOTES[index]}"
+          </p>
+        </div>
 
+        {/* Change Quote Button Centered */}
+        <div className="pt-2">
           <button
             type="button"
             onClick={handleNextQuote}
-            className="flex items-center gap-1.5 text-xs text-amber-400 hover:text-amber-300 font-extrabold transition-colors cursor-pointer px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/20 flex-shrink-0"
+            className="inline-flex items-center gap-1.5 text-xs text-amber-400 hover:text-amber-300 font-extrabold transition-colors cursor-pointer px-4 py-2 rounded-xl bg-amber-500/10 border border-amber-500/20 shadow-sm"
             title="Başka Not Göster"
           >
             <RefreshCw size={13} className="group-hover:rotate-180 transition-transform duration-500" />
-            <span className="hidden sm:inline">Değiştir</span>
+            <span>Yeni Motivasyon Notu</span>
           </button>
         </div>
+
       </div>
     </div>
   );
@@ -60,14 +65,14 @@ export default function Dashboard() {
   const reviews = getTodayReviews();
 
   return (
-    <div className="w-full flex flex-col gap-6 md:gap-8 fade-slide-up pb-8">
+    <div className="w-full max-w-3xl mx-auto flex flex-col gap-6 md:gap-8 items-center text-center fade-slide-up pb-8">
       
       {/* 1. Sınav Kalan Süre Sayacı */}
       <div className="w-full">
         <ExamCountdown />
       </div>
 
-      {/* 2. SAYAÇ ALTINDA BÜYÜK MOTİVASYON VE STRATEJİ NOTU */}
+      {/* 2. SAYAÇ ALTINDA GENEL GÜZEL MOTİVASYON NOTU (TAM ORTALI) */}
       <div className="w-full">
         <MotivationBanner />
       </div>
@@ -88,21 +93,21 @@ export default function Dashboard() {
           <button
             type="button"
             onClick={() => setView('spaced')}
-            className="w-full p-5 sm:p-6 bg-[#1C122C]/90 backdrop-blur-xl border border-purple-500/30 shadow-[0_20px_50px_-15px_rgba(168,85,247,0.2)] rounded-[28px] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 group transition-all hover:border-purple-400/50 cursor-pointer text-left"
+            className="w-full p-5 sm:p-6 bg-[#1C122C]/90 backdrop-blur-xl border border-purple-500/30 shadow-[0_20px_50px_-15px_rgba(168,85,247,0.2)] rounded-[28px] flex flex-col sm:flex-row items-center justify-between gap-4 group transition-all hover:border-purple-400/50 cursor-pointer text-center sm:text-left"
           >
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
               <div className="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-300 border border-purple-500/30 flex items-center justify-center font-black text-xl flex-shrink-0 shadow-inner">
                 <RotateCcw size={22} className="text-purple-400" />
               </div>
               <div>
-                <div className="font-extrabold text-white text-base flex items-center gap-2">
+                <div className="font-extrabold text-white text-base flex items-center justify-center sm:justify-start gap-2">
                   <span>{reviews.length} Konunun Tekrar Zamanı Geldi!</span>
                   <span className="bg-purple-500 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full">YENİ</span>
                 </div>
                 <div className="text-xs text-purple-200/70 font-medium mt-0.5">Unutma eğrisini yenmek için hemen tekrarlarını tamamla (+15 XP)</div>
               </div>
             </div>
-            <div className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-purple-500 text-slate-950 font-black text-xs shadow-lg shadow-purple-500/25 group-hover:translate-x-1 transition-transform self-end sm:self-auto">
+            <div className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-purple-500 text-slate-950 font-black text-xs shadow-lg shadow-purple-500/25 group-hover:translate-x-1 transition-transform self-center sm:self-auto">
               <span>Tekrarları İncele</span>
               <ArrowRight size={16} />
             </div>
@@ -110,10 +115,10 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* 6. DERS İLERLEMELERİ (Tarih vs Coğrafya) */}
-      <div className="p-6 md:p-8 bg-[#16171C]/90 backdrop-blur-xl border border-white/10 w-full rounded-[28px] shadow-2xl">
-        <div className="flex items-center justify-between mb-7">
-          <div>
+      {/* 6. DERS İLERLEMELERİ (Tarih vs Coğrafya - Tam Ortalı) */}
+      <div className="p-6 md:p-8 bg-[#16171C]/90 backdrop-blur-xl border border-white/10 w-full rounded-[28px] shadow-2xl text-center">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-7 text-center sm:text-left">
+          <div className="flex flex-col items-center sm:items-start">
             <h3 className="text-base sm:text-lg font-black text-white flex items-center gap-2 tracking-tight">
               <BookOpen size={20} className="text-[#FF6B00]" /> KPSS Ders İlerlemeleri
             </h3>
@@ -122,7 +127,7 @@ export default function Dashboard() {
           <button
             type="button"
             onClick={() => setView('curriculum')}
-            className="text-xs text-[#FF6B00] hover:text-[#FF8533] font-extrabold flex items-center gap-1 transition-colors cursor-pointer min-h-[44px] px-3 py-1.5 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/20"
+            className="text-xs text-[#FF6B00] hover:text-[#FF8533] font-extrabold flex items-center gap-1 transition-colors cursor-pointer min-h-[44px] px-3.5 py-1.5 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/20"
           >
             <span>Detaylı Liste</span>
             <ArrowRight size={15} />

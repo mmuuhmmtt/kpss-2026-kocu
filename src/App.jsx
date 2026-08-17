@@ -29,7 +29,7 @@ function AppContent() {
       <Navbar />
 
       {/* Main Workspace Container */}
-      <main className="flex-1 w-full px-3 sm:px-6 md:px-10 py-4 sm:py-8 mx-auto pb-28 md:pb-12 max-w-7xl">
+      <main className="flex-1 w-full max-w-4xl px-3 sm:px-6 py-4 sm:py-8 mx-auto flex flex-col items-center pb-28 md:pb-12">
         {ViewComponents[view] || <Dashboard />}
       </main>
     </div>
