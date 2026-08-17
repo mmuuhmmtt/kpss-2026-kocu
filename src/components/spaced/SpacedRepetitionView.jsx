@@ -40,23 +40,23 @@ export default function SpacedRepetitionView() {
     const overdueDays = Math.abs(diffDays(sr.nextReview));
     return (
       <div
-        className="glass-card p-5 md:p-6 flex items-center justify-between gap-4 border-0 rounded-[24px] shadow-md transition-all duration-300 bg-[#26262A]"
+        className="p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border border-white/10 rounded-3xl shadow-xl transition-all bg-[#18181C]"
       >
-        <div className="flex items-center gap-4 min-w-0">
+        <div className="flex items-center gap-3.5 min-w-0 w-full sm:w-auto">
           {/* Weight Badge */}
           <div
-            className="w-12 h-12 rounded-2xl flex flex-col items-center justify-center font-bold flex-shrink-0 shadow-inner bg-[#1A1A1D]"
+            className="w-11 h-11 rounded-2xl flex flex-col items-center justify-center font-bold flex-shrink-0 shadow-inner bg-[#111113] border border-white/5"
             style={{ color: color }}
           >
-            <span className="text-xs font-black" style={{ fontFamily: "'Orbitron', monospace" }}>
+            <span className="text-xs font-extrabold font-mono">
               ~{sr.weight?.toFixed(1) || '?'}
             </span>
-            <span className="text-[9px] uppercase tracking-tighter opacity-80">Soru</span>
+            <span className="text-[8px] uppercase tracking-tighter opacity-80">Soru</span>
           </div>
 
-          <div className="min-w-0">
-            <div className="text-base font-bold text-[#F5F5F0] truncate">{sr.title}</div>
-            <div className="text-xs text-[#9E9E9E] mt-0.5 truncate flex items-center gap-2">
+          <div className="min-w-0 flex-1">
+            <div className="text-sm sm:text-base font-extrabold text-white truncate">{sr.title}</div>
+            <div className="text-xs text-slate-400 mt-0.5 truncate flex items-center gap-2 font-medium">
               <span className="font-bold" style={{ color: color }}>{sr.topicTitle}</span>
               <span>•</span>
               <span>Aralık: {sr.intervalIndex + 1}. Adım</span>
@@ -64,20 +64,20 @@ export default function SpacedRepetitionView() {
           </div>
         </div>
 
-        <div className="flex items-center gap-4 flex-shrink-0">
+        <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto pt-2 sm:pt-0 border-t border-white/5 sm:border-0 flex-shrink-0">
           {isOverdue && (
-            <div className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#1A1A1D] text-[#F87171] text-xs font-extrabold shadow-inner">
-              <AlertTriangle size={14} className="text-[#F87171]" />
-              <span>{overdueDays} gün gecikti</span>
+            <div className="flex items-center gap-1 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 text-[11px] font-bold">
+              <AlertTriangle size={13} className="text-rose-400" />
+              <span>{overdueDays}g gecikti</span>
             </div>
           )}
 
           <button
             onClick={() => handleReview(sr.id)}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-black text-[#1A1A1D] bg-[#38BDF8] hover:opacity-90 transition-all shadow-md cursor-pointer"
-            style={{ filter: 'drop-shadow(0 0 6px rgba(56, 189, 248, 0.35))' }}
+            className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-extrabold text-slate-950 bg-cyan-400 hover:bg-cyan-300 transition-all shadow-lg shadow-cyan-400/20 cursor-pointer ml-auto sm:ml-0"
           >
-            <RotateCcw size={14} /> Tekrar Et (+15 XP)
+            <RotateCcw size={14} />
+            <span>Tekrar Et (+15 XP)</span>
           </button>
         </div>
       </div>

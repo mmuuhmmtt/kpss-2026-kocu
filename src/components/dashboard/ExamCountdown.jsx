@@ -30,64 +30,61 @@ export default function ExamCountdown() {
   const prepProgressPct = Math.min(100, Math.max(5, Math.round((daysPassed / totalWindowDays) * 100)));
 
   return (
-    <div className="glass-card p-5 md:p-7 relative overflow-hidden border-0 bg-[#26262A] shadow-xl rounded-[28px] w-full group">
+    <div className="p-4 sm:p-7 relative overflow-hidden bg-[#18181C] border border-white/10 shadow-2xl rounded-3xl w-full group">
       
       <div className="relative z-10 w-full flex flex-col items-center justify-center space-y-4">
         
         {/* Top Minimalist Pill Badge Header */}
         <div className="flex items-center gap-2">
-          <div className="px-4 py-1.5 rounded-full bg-[#1A1A1D] text-[#F5F5F0] text-[11px] font-black uppercase tracking-wider flex items-center gap-2 shadow-inner">
-            <Clock size={12} className="text-[#F5F5F0]" />
+          <div className="px-3 sm:px-4 py-1.5 rounded-full bg-[#111113] border border-white/5 text-slate-300 text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider flex items-center gap-2 shadow-inner">
+            <Clock size={12} className="text-[#FF6B00]" />
             <span>KPSS 2026 LİSANS SINAV SAYAÇ</span>
-            <Sparkles size={11} className="text-[#F5F5F0]" />
+            <Sparkles size={11} className="text-[#FF6B00]" />
           </div>
         </div>
 
-        {/* 3 Gamified Digit Cards Display (All Uniform Vibrant Claude Neon Orange #FF6B00) */}
-        <div className="grid grid-cols-3 gap-3 md:gap-5 w-full text-center">
-          <div className="bg-[#1A1A1D] p-3.5 md:p-5 rounded-[22px] flex flex-col items-center justify-center shadow-inner transition-transform duration-200 hover:scale-[1.02]">
+        {/* 3 Gamified Digit Cards Display */}
+        <div className="grid grid-cols-3 gap-2.5 sm:gap-5 w-full text-center">
+          <div className="bg-[#111113] p-3 sm:p-5 rounded-2xl sm:rounded-[22px] border border-white/5 flex flex-col items-center justify-center shadow-inner transition-transform duration-200 hover:scale-[1.02]">
             <span
-              className="text-3xl md:text-4xl font-black text-[#FF6B00] tracking-tight"
-              style={{ fontFamily: "'Orbitron', monospace", filter: 'drop-shadow(0 0 8px rgba(255, 107, 0, 0.45))' }}
+              className="text-2xl sm:text-4xl font-extrabold text-[#FF6B00] tracking-tight font-mono"
             >
               {pad(time.days)}
             </span>
-            <span className="text-[9px] md:text-[10px] font-black text-[#FF6B00] uppercase tracking-widest mt-1">
+            <span className="text-[9px] sm:text-[10px] font-bold text-[#FF6B00] uppercase tracking-widest mt-1">
               GÜN
             </span>
           </div>
 
-          <div className="bg-[#1A1A1D] p-3.5 md:p-5 rounded-[22px] flex flex-col items-center justify-center shadow-inner transition-transform duration-200 hover:scale-[1.02]">
+          <div className="bg-[#111113] p-3 sm:p-5 rounded-2xl sm:rounded-[22px] border border-white/5 flex flex-col items-center justify-center shadow-inner transition-transform duration-200 hover:scale-[1.02]">
             <span
-              className="text-3xl md:text-4xl font-black text-[#FF6B00] tracking-tight"
-              style={{ fontFamily: "'Orbitron', monospace", filter: 'drop-shadow(0 0 8px rgba(255, 107, 0, 0.45))' }}
+              className="text-2xl sm:text-4xl font-extrabold text-[#FF6B00] tracking-tight font-mono"
             >
               {pad(time.hours)}
             </span>
-            <span className="text-[9px] md:text-[10px] font-black text-[#FF6B00] uppercase tracking-widest mt-1">
+            <span className="text-[9px] sm:text-[10px] font-bold text-[#FF6B00] uppercase tracking-widest mt-1">
               SAAT
             </span>
           </div>
 
-          <div className="bg-[#1A1A1D] p-3.5 md:p-5 rounded-[22px] flex flex-col items-center justify-center shadow-inner transition-transform duration-200 hover:scale-[1.02]">
+          <div className="bg-[#111113] p-3 sm:p-5 rounded-2xl sm:rounded-[22px] border border-white/5 flex flex-col items-center justify-center shadow-inner transition-transform duration-200 hover:scale-[1.02]">
             <span
-              className="text-3xl md:text-4xl font-black text-[#FF6B00] tracking-tight"
-              style={{ fontFamily: "'Orbitron', monospace", filter: 'drop-shadow(0 0 8px rgba(255, 107, 0, 0.45))' }}
+              className="text-2xl sm:text-4xl font-extrabold text-[#FF6B00] tracking-tight font-mono"
             >
               {pad(time.minutes)}
             </span>
-            <span className="text-[9px] md:text-[10px] font-black text-[#FF6B00] uppercase tracking-widest mt-1">
+            <span className="text-[9px] sm:text-[10px] font-bold text-[#FF6B00] uppercase tracking-widest mt-1">
               DAKİKA
             </span>
           </div>
         </div>
 
-        {/* Exam Target Date Badge with Spacious Gap */}
-        <div className="pt-4 mt-2">
-          <div className="px-6 py-2.5 rounded-2xl bg-[#1A1A1D] text-xs font-extrabold text-[#F5F5F0] flex items-center gap-2 shadow-inner">
-            <Calendar size={15} className="text-[#FF6B00]" />
+        {/* Exam Target Date Badge */}
+        <div className="pt-2 sm:pt-4">
+          <div className="px-4 sm:px-6 py-2 rounded-2xl bg-[#111113] border border-white/5 text-[11px] sm:text-xs font-bold text-slate-300 flex items-center gap-2 shadow-inner">
+            <Calendar size={14} className="text-[#FF6B00]" />
             <span>Hedef Sınav Tarihi:</span>
-            <span className="text-[#FF6B00] font-black">{examDateStr} (Pazar)</span>
+            <span className="text-[#FF6B00] font-extrabold">{examDateStr}</span>
           </div>
         </div>
 

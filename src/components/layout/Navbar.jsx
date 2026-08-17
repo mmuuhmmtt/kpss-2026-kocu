@@ -108,20 +108,29 @@ export default function Navbar() {
       </header>
 
       {/* Mobile Navigation Bar at Bottom */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#26262A] shadow-2xl flex items-center justify-around px-2 py-2 border-t border-[#1A1A1D]">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#18181C]/95 backdrop-blur-md shadow-2xl flex items-center justify-around px-1.5 py-2 border-t border-white/10">
         {NAV_ITEMS.map(item => {
           const Icon = item.icon;
           const isActive = state.view === item.id;
+          const showBadge = item.id === 'spaced' && dueCount > 0;
+
           return (
             <button
               key={item.id}
               onClick={() => setView(item.id)}
-              className={`flex flex-col items-center gap-1 px-3.5 py-1.5 rounded-2xl transition-all cursor-pointer ${
-                isActive ? 'text-[#FF6B00] font-black bg-[#1A1A1D]' : 'text-[#9E9E9E]'
+              className={`flex flex-col items-center justify-center gap-1 px-3 py-1.5 rounded-2xl transition-all cursor-pointer relative min-h-[48px] min-w-[56px] ${
+                isActive ? 'text-[#FF6B00] font-extrabold bg-[#111113]' : 'text-slate-400 hover:text-white'
               }`}
             >
-              <Icon size={18} className={isActive ? 'text-[#FF6B00] stroke-[2.5]' : ''} />
-              <span className="text-[10px]">{item.label}</span>
+              <div className="relative flex items-center justify-center">
+                <Icon size={19} className={isActive ? 'text-[#FF6B00] stroke-[2.5]' : 'text-slate-400'} />
+                {showBadge && (
+                  <span className="absolute -top-1.5 -right-2 bg-rose-500 text-slate-950 text-[9px] font-black rounded-full min-w-4 h-4 flex items-center justify-center px-1 border border-[#18181C]">
+                    {dueCount}
+                  </span>
+                )}
+              </div>
+              <span className="text-[10px] font-semibold">{item.label}</span>
             </button>
           );
         })}
