@@ -28,7 +28,7 @@ export default function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-40 bg-[#26262A] shadow-lg border-0">
-        <div className="max-w-5xl mx-auto w-full px-4 sm:px-6 md:px-8 h-16 flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-8 md:px-12 h-16 flex items-center justify-between gap-4">
           
           {/* Logo & User Greeting */}
           <button
