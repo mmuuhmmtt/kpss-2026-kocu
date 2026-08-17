@@ -4,7 +4,7 @@ import ExamCountdown from './ExamCountdown';
 import MascotXPWidget from './MascotXPWidget';
 import TargetNetWidget from './TargetNetWidget';
 import DailyPracticeWidget from './DailyPracticeWidget';
-import { RotateCcw, BookOpen, ArrowRight } from 'lucide-react';
+import { RotateCcw, BookOpen, ArrowRight, Sparkles, AlertCircle } from 'lucide-react';
 
 export default function Dashboard() {
   const { state, getTodayReviews, setView } = useApp();
@@ -12,43 +12,48 @@ export default function Dashboard() {
 
   return (
     <div className="w-full flex flex-col gap-6 md:gap-8 fade-slide-up pb-8">
-      {/* 1. Sınav Kalan Süre Sayacı */}
+      
+      {/* 1. Sınav Kalan Süre Sayacı (Neon Orange Theme) */}
       <div className="w-full">
         <ExamCountdown />
       </div>
 
-      {/* 2. Günlük Türkçe & Matematik Pratik Deneme Takibi */}
+      {/* 2. Günlük Türkçe & Matematik Pratik Deneme Takibi (Electric Cyan Theme) */}
       <div className="w-full">
         <DailyPracticeWidget />
       </div>
 
-      {/* 3. Hedef Net & Karşılaştırma Widget'ı */}
+      {/* 3. Hedef Net & Karşılaştırma Widget'ı (Royal Emerald Theme) */}
       <div className="w-full">
         <TargetNetWidget />
       </div>
 
-      {/* 4. KPSS Koçu Maskotu & XP Widget */}
+      {/* 4. KPSS Koçu Maskotu & XP Widget (Warm Sunset Amber Theme) */}
       <div className="w-full">
         <MascotXPWidget />
       </div>
 
-      {/* 4. Spaced Repetition Alert (Eğer Tekrar Zamanı Geldiyse) */}
+      {/* 5. Spaced Repetition Alert (Electric Violet Theme) */}
       {reviews.length > 0 && (
         <div className="w-full">
           <button
+            type="button"
             onClick={() => setView('spaced')}
-            className="w-full glass-card p-5 flex items-center justify-between gap-4 border-0 bg-[#26262A] shadow-lg group rounded-[24px]"
+            className="w-full p-5 sm:p-6 bg-[#1C122C]/90 backdrop-blur-xl border border-purple-500/30 shadow-[0_20px_50px_-15px_rgba(168,85,247,0.2)] rounded-[28px] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 group transition-all hover:border-purple-400/50 cursor-pointer text-left"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-[#1A1A1D] text-[#D09B82] flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-inner">
-                <RotateCcw size={20} />
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-300 border border-purple-500/30 flex items-center justify-center font-black text-xl flex-shrink-0 shadow-inner">
+                <RotateCcw size={22} className="text-purple-400" />
               </div>
-              <div className="text-left">
-                <div className="font-bold text-[#F5F5F0] text-sm">{reviews.length} Konunun Tekrar Zamanı Geldi!</div>
-                <div className="text-xs text-[#D09B82]">Unutma eğrisini yenmek için hemen başla</div>
+              <div>
+                <div className="font-extrabold text-white text-base flex items-center gap-2">
+                  <span>{reviews.length} Konunun Tekrar Zamanı Geldi!</span>
+                  <span className="bg-purple-500 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full">YENİ</span>
+                </div>
+                <div className="text-xs text-purple-200/70 font-medium mt-0.5">Unutma eğrisini yenmek için hemen tekrarlarını tamamla (+15 XP)</div>
               </div>
             </div>
-            <div className="flex items-center gap-1 text-xs font-bold text-[#D09B82] group-hover:translate-x-1 transition-transform">
+            <div className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-purple-500 text-slate-950 font-black text-xs shadow-lg shadow-purple-500/25 group-hover:translate-x-1 transition-transform self-end sm:self-auto">
               <span>Tekrarları İncele</span>
               <ArrowRight size={16} />
             </div>
@@ -56,25 +61,27 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* 5. DERS MODÜLLERİ (6 KPSS DERSİ) - Wellness Circular Progress Rings Grid */}
-      <div className="glass-card p-6 md:p-8 border-0 bg-[#26262A] w-full rounded-[28px] shadow-xl">
-        <div className="flex items-center justify-between mb-8">
+      {/* 6. DERS İLERLEMELERİ (Tarih - Ruby Crimson vs Coğrafya - Teal Mint) */}
+      <div className="p-6 md:p-8 bg-[#16171C]/90 backdrop-blur-xl border border-white/10 w-full rounded-[28px] shadow-2xl">
+        <div className="flex items-center justify-between mb-7">
           <div>
-            <h3 className="text-base md:text-lg font-extrabold text-[#F5F5F0] flex items-center gap-2">
-              <BookOpen size={20} className="text-[#F5F5F0]" /> Ders İlerlemeleri
+            <h3 className="text-base sm:text-lg font-black text-white flex items-center gap-2 tracking-tight">
+              <BookOpen size={20} className="text-[#FF6B00]" /> KPSS Ders İlerlemeleri
             </h3>
-            <p className="text-xs text-[#9E9E9E] mt-0.5 font-medium">KPSS Soru dağılımına göre konu tamamlama oranların</p>
+            <p className="text-xs text-slate-400 mt-0.5 font-medium">Sınav soru ağırlığına göre konu tamamlama durumunuz</p>
           </div>
           <button
+            type="button"
             onClick={() => setView('curriculum')}
-            className="text-xs text-[#F5F5F0] hover:opacity-80 font-bold flex items-center gap-1 transition-opacity cursor-pointer min-h-[44px] px-2"
+            className="text-xs text-[#FF6B00] hover:text-[#FF8533] font-extrabold flex items-center gap-1 transition-colors cursor-pointer min-h-[44px] px-3 py-1.5 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/20"
           >
-            Detaylı Liste <ArrowRight size={14} />
+            <span>Detaylı Liste</span>
+            <ArrowRight size={15} />
           </button>
         </div>
 
-        {/* Wellness Circular Progress Rings Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+        {/* Dynamic Distinct Color Subject Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
           {[...state.curriculum].sort((a, b) => b.totalWeight - a.totalWeight).map(subject => {
             let total = 0, done = 0;
             for (const t of subject.topics) {
@@ -86,24 +93,30 @@ export default function Dashboard() {
             const spct = total > 0 ? Math.round((done / total) * 100) : 0;
             
             // SVG Circle Math
-            const radius = 34;
+            const radius = 32;
             const circumference = 2 * Math.PI * radius;
             const strokeDashoffset = circumference - (spct / 100) * circumference;
+
+            const isTarih = subject.id === 'tarih';
+            const cardBg = isTarih ? 'bg-[#221316]/90 border-rose-500/30' : 'bg-[#0B2019]/90 border-emerald-500/30';
+            const badgeBg = isTarih ? 'bg-rose-500/15 text-rose-300 border-rose-500/30' : 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30';
+            const accentColor = isTarih ? '#F87171' : '#34D399';
 
             return (
               <button
                 key={subject.id}
+                type="button"
                 onClick={() => setView('curriculum')}
-                className="p-6 text-center group flex flex-col sm:flex-row items-center justify-between cursor-pointer border border-white/5 bg-[#18181B] hover:bg-[#202024] rounded-2xl shadow-lg transition-all"
+                className={`p-6 text-center group flex flex-col sm:flex-row items-center justify-between cursor-pointer border rounded-3xl shadow-xl transition-all hover:scale-[1.01] ${cardBg}`}
               >
                 <div className="flex items-center gap-4 mb-4 sm:mb-0">
-                  <div className="w-14 h-14 rounded-2xl bg-[#111113] border border-white/10 flex items-center justify-center text-3xl group-hover:scale-105 transition-transform shadow-inner">
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-105 transition-transform shadow-inner border ${badgeBg}`}>
                     {subject.icon}
                   </div>
                   <div className="text-left">
-                    <h4 className="font-extrabold text-white text-base group-hover:text-emerald-400 transition-colors">{subject.name}</h4>
-                    <span className="text-xs font-semibold text-slate-400 block mt-0.5">{subject.totalWeight} Soru</span>
-                    <p className="text-xs text-slate-500 mt-1 font-medium">{done}/{total} konu tamamlandı</p>
+                    <h4 className="font-extrabold text-white text-lg group-hover:opacity-90 transition-opacity">{subject.name}</h4>
+                    <span className="text-xs font-bold block mt-0.5" style={{ color: accentColor }}>{subject.totalWeight} Soru Ağırlığı</span>
+                    <p className="text-xs text-slate-400 mt-1 font-medium">{done} / {total} alt konu tamamlandı</p>
                   </div>
                 </div>
 
@@ -114,7 +127,7 @@ export default function Dashboard() {
                       cx="40"
                       cy="40"
                       r={radius}
-                      className="text-[#111113]"
+                      className="text-white/5"
                       strokeWidth="5"
                       stroke="currentColor"
                       fill="transparent"
@@ -123,7 +136,7 @@ export default function Dashboard() {
                       cx="40"
                       cy="40"
                       r={radius}
-                      stroke={subject.accentColor || '#10B981'}
+                      stroke={accentColor}
                       strokeWidth="5"
                       strokeDasharray={circumference}
                       strokeDashoffset={strokeDashoffset}
@@ -135,8 +148,8 @@ export default function Dashboard() {
 
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <span
-                      className="text-base font-extrabold font-mono tracking-tight"
-                      style={{ color: subject.accentColor || '#10B981' }}
+                      className="text-base font-black font-mono tracking-tight"
+                      style={{ color: accentColor }}
                     >
                       %{spct}
                     </span>
@@ -150,4 +163,3 @@ export default function Dashboard() {
     </div>
   );
 }
-
