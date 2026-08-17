@@ -89,7 +89,7 @@ export default function MascotXPWidget() {
                 cx="48"
                 cy="48"
                 r={radius}
-                stroke="#10B981"
+                stroke="#FF6B00"
                 strokeWidth="6"
                 strokeDasharray={circumference}
                 strokeDashoffset={strokeDashoffset}
@@ -101,18 +101,18 @@ export default function MascotXPWidget() {
 
             <div className="absolute inset-3 rounded-full bg-[#111113] border border-white/10 flex flex-col items-center justify-center shadow-inner group-hover:scale-105 transition-transform">
               <span className="text-3xl select-none">{mascotEmoji}</span>
-              <span className="text-[10px] font-extrabold text-emerald-400 font-mono mt-0.5">
+              <span className="text-[10px] font-extrabold text-[#FF6B00] font-mono mt-0.5">
                 %{pct}
               </span>
             </div>
 
-            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-emerald-500 text-slate-950 font-extrabold text-[11px] shadow-md flex items-center gap-1">
-              <Zap size={11} className="fill-slate-950 text-slate-950" />
+            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-[#FF6B00] text-[#1A1A1D] font-extrabold text-[11px] shadow-md flex items-center gap-1">
+              <Zap size={11} className="fill-[#1A1A1D] text-[#1A1A1D]" />
               <span>Lvl {levelInfo.level}</span>
             </div>
           </div>
 
-          <div className="text-[11px] text-emerald-400 font-bold mt-2 flex items-center gap-1 hover:opacity-80">
+          <div className="text-[11px] text-[#FF6B00] font-bold mt-2 flex items-center gap-1 hover:opacity-80">
             <MessageSquare size={12} />
             <span>{mascotTitle}</span>
           </div>
@@ -127,43 +127,19 @@ export default function MascotXPWidget() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-0.5">
-            <div>
-              <div className="flex items-center gap-2">
-                <Trophy size={18} className="text-emerald-400" />
-                <h3 className="font-extrabold text-white text-base md:text-lg tracking-tight">
-                  {levelInfo.title}
-                </h3>
-              </div>
-              <p className="text-xs text-slate-400 mt-0.5 font-medium">
-                {levelInfo.next ? `Sonraki Hedef: Unvan - ${levelInfo.next.title}` : '🏆 En Yüksek Seviyedesin!'}
-              </p>
+          <div className="flex items-center justify-between gap-2 pt-1">
+            <div className="flex items-center gap-2">
+              <Compass size={18} className="text-[#FF6B00]" />
+              <h3 className="font-extrabold text-white text-sm sm:text-base tracking-tight">
+                KPSS Tarih & Coğrafya Strateji Asistanı
+              </h3>
             </div>
 
-            <div className="bg-[#111113] px-3.5 py-1.5 rounded-xl border border-white/5 flex items-center justify-between sm:justify-start gap-2 self-start sm:self-auto shadow-inner">
+            <div className="bg-[#111113] px-3.5 py-1.5 rounded-xl border border-white/5 flex items-center gap-2 shadow-inner">
               <span className="text-xs text-slate-400 font-medium">Toplam XP:</span>
-              <span className="text-sm font-extrabold text-emerald-400 font-mono tracking-wide">
+              <span className="text-xs sm:text-sm font-extrabold text-[#FF6B00] font-mono tracking-wide">
                 {state.xp.toLocaleString('tr-TR')} XP
               </span>
-            </div>
-          </div>
-
-          <div>
-            <div className="flex justify-between items-center text-xs font-semibold text-slate-400 mb-1.5">
-              <span>Seviye İlerlemesi (%{pct})</span>
-              {levelInfo.next ? (
-                <span className="text-slate-200 font-mono">
-                  {xpInLevel} / {xpNeeded} XP
-                </span>
-              ) : (
-                <span className="text-slate-200">Maksimum Seviye</span>
-              )}
-            </div>
-            <div className="h-2.5 bg-[#111113] rounded-full overflow-hidden p-0.5 border border-white/5 shadow-inner">
-              <div
-                className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-700 ease-out"
-                style={{ width: `${pct}%` }}
-              />
             </div>
           </div>
 
