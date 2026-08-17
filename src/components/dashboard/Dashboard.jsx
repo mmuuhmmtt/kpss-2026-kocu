@@ -1,10 +1,68 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import ExamCountdown from './ExamCountdown';
-import MascotXPWidget from './MascotXPWidget';
 import TargetNetWidget from './TargetNetWidget';
 import DailyPracticeWidget from './DailyPracticeWidget';
-import { RotateCcw, BookOpen, ArrowRight, Sparkles, AlertCircle } from 'lucide-react';
+import { RotateCcw, BookOpen, ArrowRight, Quote, Sparkles, RefreshCw, Compass } from 'lucide-react';
+
+const MOTIVATION_NOTES = [
+  "Tarih ve Coğrafya'da derece yapanlar; kronoloji takibini, harita okumayı ve düzenli soru tekrarını alışkanlık edinenlerdir.",
+  "Her gün aksatmadan çözeceğin 30 Türkçe ve 30 Matematik sorusu, sınav günü seni hedeflediğin yüksek puana taşıyacak.",
+  "Kurtuluş Savaşı kongreleri ve Atatürk inkılapları KPSS Tarih'in en çok soru çıkan kalbidir; konu eksiklerini hemen kapat!",
+  "Coğrafya madenler, iklim ve nüfus soruları ezber değil harita mantığı işidir. Haritaya bakarak çalış, netlerini katla!",
+  "Bugün atacağın her disiplinli adım, sınav sonuçları açıklandığında hissedeceğin o büyük gururun temelidir. Vazgeçme ve devam et!"
+];
+
+function MotivationBanner() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const randomIdx = Math.floor(Math.random() * MOTIVATION_NOTES.length);
+    setIndex(randomIdx);
+  }, []);
+
+  const handleNextQuote = () => {
+    setIndex((prev) => (prev + 1) % MOTIVATION_NOTES.length);
+  };
+
+  return (
+    <div className="p-6 sm:p-8 bg-[#1A140E]/90 backdrop-blur-xl border border-amber-500/30 shadow-[0_20px_50px_-15px_rgba(245,158,11,0.2)] rounded-[28px] relative overflow-hidden group">
+      
+      {/* Warm Amber Radial Glow */}
+      <div className="absolute top-0 right-0 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="relative z-10 space-y-4">
+        
+        {/* Badge Header */}
+        <div className="flex items-center justify-between">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-black uppercase tracking-wider shadow-sm">
+            <Compass size={14} className="text-amber-400" />
+            <span>Günün KPSS Koçluk Tavsiyesi</span>
+          </div>
+
+          <button
+            type="button"
+            onClick={handleNextQuote}
+            className="flex items-center gap-1.5 text-xs text-amber-400 hover:text-amber-300 font-extrabold transition-colors cursor-pointer px-3 py-1 rounded-xl bg-amber-500/10 border border-amber-500/20"
+            title="Başka Tavsiye Göster"
+          >
+            <RefreshCw size={13} className="group-hover:rotate-180 transition-transform duration-500" />
+            <span className="hidden sm:inline">Yeni Tavsiye</span>
+          </button>
+        </div>
+
+        {/* Large Prominent Quote Text */}
+        <div className="flex items-start gap-4 pt-1">
+          <Quote size={32} className="text-amber-400 flex-shrink-0 opacity-80 mt-1" />
+          <p className="text-base sm:text-xl font-bold text-amber-100 italic leading-snug tracking-tight">
+            "{MOTIVATION_NOTES[index]}"
+          </p>
+        </div>
+
+      </div>
+    </div>
+  );
+}
 
 export default function Dashboard() {
   const { state, getTodayReviews, setView } = useApp();
@@ -13,27 +71,27 @@ export default function Dashboard() {
   return (
     <div className="w-full flex flex-col gap-6 md:gap-8 fade-slide-up pb-8">
       
-      {/* 1. Sınav Kalan Süre Sayacı (Neon Orange Theme) */}
+      {/* 1. Sınav Kalan Süre Sayacı */}
       <div className="w-full">
         <ExamCountdown />
       </div>
 
-      {/* 2. Günlük Türkçe & Matematik Pratik Deneme Takibi (Electric Cyan Theme) */}
+      {/* 2. SAYAÇ ALTINDA BÜYÜK MOTİVASYON VE STRATEJİ NOTU */}
+      <div className="w-full">
+        <MotivationBanner />
+      </div>
+
+      {/* 3. Günlük Türkçe & Matematik Pratik Deneme Takibi */}
       <div className="w-full">
         <DailyPracticeWidget />
       </div>
 
-      {/* 3. Hedef Net & Karşılaştırma Widget'ı (Royal Emerald Theme) */}
+      {/* 4. Hedef Net & Karşılaştırma Widget'ı */}
       <div className="w-full">
         <TargetNetWidget />
       </div>
 
-      {/* 4. KPSS Koçu Maskotu & XP Widget (Warm Sunset Amber Theme) */}
-      <div className="w-full">
-        <MascotXPWidget />
-      </div>
-
-      {/* 5. Spaced Repetition Alert (Electric Violet Theme) */}
+      {/* 5. Spaced Repetition Alert (Eğer Tekrar Zamanı Geldiyse) */}
       {reviews.length > 0 && (
         <div className="w-full">
           <button
@@ -61,7 +119,7 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* 6. DERS İLERLEMELERİ (Tarih - Ruby Crimson vs Coğrafya - Teal Mint) */}
+      {/* 6. DERS İLERLEMELERİ (Tarih vs Coğrafya) */}
       <div className="p-6 md:p-8 bg-[#16171C]/90 backdrop-blur-xl border border-white/10 w-full rounded-[28px] shadow-2xl">
         <div className="flex items-center justify-between mb-7">
           <div>
